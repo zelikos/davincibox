@@ -1,0 +1,12 @@
+apr
+apr-util
+librsvg2
+libxkbcommon-x11
+mesa-libGLU
+rocm-opencl
+xcb-util
+xcb-util-image
+xcb-util-keysyms
+xcb-util-renderutil
+xcb-util-wm
+libxcrypt-compat

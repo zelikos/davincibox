@@ -9,3 +9,7 @@ LABEL com.github.containers.toolbox="true" \
       summary="Dependencies for running DaVinci Resolve on image-based Linux operating systems" \
       maintainer="pcsikos@zelikos.dev"
 
+COPY extra-packages /
+RUN dnf update \
+    grep -v '^#' /extra-packages | xargs dnf install
+RUN rm /extra-packages

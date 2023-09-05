@@ -10,6 +10,6 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="pcsikos@zelikos.dev"
 
 COPY extra-packages /
-RUN dnf update && \
-    grep -v '^#' /extra-packages | xargs dnf install
+RUN dnf -y update && \
+    grep -v '^#' /extra-packages | xargs dnf -y install
 RUN rm /extra-packages

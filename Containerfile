@@ -9,6 +9,9 @@ LABEL com.github.containers.toolbox="true" \
       summary="Dependencies for running DaVinci Resolve on image-based Linux operating systems" \
       maintainer="pcsikos@zelikos.dev"
 
+RUN dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+RUN dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 COPY extra-packages /
 RUN dnf -y update && \
     grep -v '^#' /extra-packages | xargs dnf -y install

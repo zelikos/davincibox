@@ -1,3 +1,4 @@
+akmod-nvidia
 alsa-lib
 apr
 apr-util
@@ -7,6 +8,7 @@ libglvnd-glx
 libICE
 librsvg2
 libSM
+libxcrypt-compat
 libXcursor
 libXfixes
 libXi
@@ -24,4 +26,4 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-libxcrypt-compat
+xorg-x11-drv-nvidia-cuda

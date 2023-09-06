@@ -20,7 +20,7 @@ First, you need to make `setup.sh` executable.
 
 ### Option 1
 
-Run `chmod +x /path/to/setup.sh`
+Open a terminal, then run `chmod +x /path/to/setup.sh`
 
 Then, `/path/to/setup.sh /path/to/DaVinci_Resolve_versionnumber_Linux.run`
 

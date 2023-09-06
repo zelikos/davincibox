@@ -12,6 +12,8 @@ You will also need the latest release of DaVinci Resolve from [Blackmagic's webs
 
 ## Setup
 
+The long-term plan is to automate this process with a setup script or app, but for now, follow the instructions below to get DaVinci Resolve up and running on your system.
+
 First, download DaVinci Resolve from the link above. Then, extract the archive. Open a terminal in the directory that contains the `DaVinci_Resolve_<version>_Linux.run` file (\<version\> will correspond to the version of DaVinci Resolve you downloaded).
 
 In your terminal,

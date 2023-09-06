@@ -81,9 +81,9 @@ if $add_launcher
 then
     if $use_distrobox
     then
-        distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
         # Because the .desktop file distrobox creatres requires the directory to exist
         pkexec mkdir /opt/resolve
+        distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
     # TODO: Toolbox support
     fi
 else

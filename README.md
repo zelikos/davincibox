@@ -18,13 +18,13 @@ This assumes you're using the `setup.sh` script from this repository.
 
 First, you need to make `setup.sh` executable.
 
-### Option 1
+### Method 1
 
 Open a terminal, then run `chmod +x /path/to/setup.sh`
 
 Then, `/path/to/setup.sh /path/to/DaVinci_Resolve_versionnumber_Linux.run`
 
-### Option 2
+### Method 2
 
 If you're more comfortable in a GUI:
 

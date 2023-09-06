@@ -69,6 +69,7 @@ rm -rf squashfs-root/
 add_launcher=false
 
 echo "Add DaVinci Resolve launcher? y/N"
+echo "Note: This currently requires administrative priveleges"
 read response
 case "$response" in
     "y")    add_launcher=true;;
@@ -81,6 +82,8 @@ then
     if $use_distrobox
     then
         distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
+        # Because the .desktop file distrobox creatres requires the directory to exist
+        pkexec mkdir /opt/resolve
     # TODO: Toolbox support
     fi
 else

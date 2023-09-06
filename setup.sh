@@ -38,6 +38,9 @@ echo "Setting up davincibox..."
 if $use_distrobox
 then
     distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
+    # Start up the container now after creation,
+    # rather than during the later steps
+    distrobox enter davincibox -- echo "davincibox initialized"
 else
     toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
 fi
@@ -51,7 +54,7 @@ then
         distrobox enter davincibox -- sudo squashfs-root/AppRun -i -a -y
         # Workaround for an issue with Resolve's included libglib-2.0
         # May not be needed in the future
-        distrobox enter davincibox -- sudo rm /opt/resolve/libs/libglib-2.0.*
+        distrobox enter davincibox -- sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
     # TODO: Add toolbox support
     fi
 else
@@ -59,6 +62,36 @@ else
     exit
 fi
 
+# Cleanup
+rm -rf squashfs-root/
+
 # Prompt user about adding desktop launcher
-# If using distrobox, run distrobox-export --app /opt/resolve/bin/resolve from davincibox
-# Else, do toolbox steps
+add_launcher=false
+
+echo "Add DaVinci Resolve launcher? y/N"
+read response
+case "$response" in
+    "y")    add_launcher=true;;
+    "Y")    add_launcher=true;;
+    *)      add_launcher=false;;
+esac
+
+if $add_launcher
+then
+    if $use_distrobox
+    then
+        distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
+    # TODO: Toolbox support
+    fi
+else
+    echo "If you would like to create a launcher later,"
+    if $use_distrobox
+    then
+        echo "run the following command:"
+        echo "distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve"
+    # TODO: Toolbox
+    fi
+    echo ""
+    echo "Otherwise, to run DaVinci Resolve from the CLI, use:"
+    echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
+fi

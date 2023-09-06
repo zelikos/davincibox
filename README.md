@@ -47,7 +47,7 @@ Right-click on an empty spot in the folder. You should see either "Open in Conso
 In the newly-opened terminal window, enter the command below. Replace 'version' with the version of DaVinci Resolve that you are installing (see screenshot for example):
 
 ```
-./setup.sh DaVinci_Resolve_version_Linux.run
+./setup.sh ./DaVinci_Resolve_version_Linux.run
 ```
 
 ![](screenshots/setup_05.webp)

@@ -70,6 +70,7 @@ rm -rf squashfs-root/
 # Prompt user about adding desktop launcher
 add_launcher=false
 
+# TODO: Better phrasing
 echo "Add DaVinci Resolve launcher? y/N"
 echo "Note: This currently requires administrative priveleges"
 read response
@@ -100,5 +101,9 @@ else
     fi
     echo ""
     echo "Otherwise, to run DaVinci Resolve from the CLI, use:"
-    echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
+    if &use_distrobox
+    then
+        echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
+    else
+        echo "toolbox run --container davincibox /opt/resolve/bin/resolve
 fi

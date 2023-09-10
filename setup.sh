@@ -17,13 +17,12 @@ then
             echo "Please install either distrobox or toolbox to use this script."
             exit
         else
+            use_distrobox=false
             echo "Toolbox found."
-            # TODO: Add Toolbox support
-            echo "Toolbox support is currently WIP. Please use distrobox for now."
-            exit
         fi
     else
-        use_distrobox=true
+        # UNCOMMENT AFTER TESTING
+        #use_distrobox=true
         echo "Distrobox found."
     fi
 else
@@ -43,6 +42,7 @@ then
     distrobox enter davincibox -- echo "davincibox initialized"
 else
     toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
+    toolbox run --container davincibox echo "davincibox initialized"
 fi
 
 # Extract DaVinci Resolve installer
@@ -55,7 +55,9 @@ then
         # Workaround for an issue with Resolve's included libglib-2.0
         # May not be needed in the future
         distrobox enter davincibox -- sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-    # TODO: Add toolbox support
+    else
+        toolbox run --container davincibox sudo squashfs-root/AppRun -i -a -y
+        toolbox run --container davincibox sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
     fi
 else
     echo "${1} is not a DaVinci Resolve installer."
@@ -84,15 +86,17 @@ then
         # Because the .desktop file distrobox creatres requires the directory to exist
         pkexec mkdir /opt/resolve
         distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
-    # TODO: Toolbox support
+    else
+        echo "Launcher support for Toolbox is WIP."
     fi
 else
     echo "If you would like to create a launcher later,"
+    echo "run the following command:"
     if $use_distrobox
     then
-        echo "run the following command:"
         echo "distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve"
-    # TODO: Toolbox
+    else
+        echo "Launcher support for Toolbox is WIP."
     fi
     echo ""
     echo "Otherwise, to run DaVinci Resolve from the CLI, use:"

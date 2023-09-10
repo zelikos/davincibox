@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:latest AS davincibox
+FROM registry.fedoraproject.org/fedora-toolbox:38 AS davincibox
 
 # Support Nvidia Container Runtime (https://developer.nvidia.com/nvidia-container-runtime)
 ENV NVIDIA_VISIBLE_DEVICES all

@@ -105,5 +105,5 @@ else
     then
         echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
     else
-        echo "toolbox run --container davincibox /opt/resolve/bin/resolve
+        echo "toolbox run --container davincibox /opt/resolve/bin/resolve"
 fi

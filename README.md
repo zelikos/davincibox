@@ -10,21 +10,17 @@ If using an Nvidia GPU, you will also need the `nvidia-container-runtime` packag
 
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
 
-Finally, I recommend that you download the `setup.sh` script from this repository to simplify the setup process.
+If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.
 
-## Easy Setup
+## Setup
 
-This assumes you're using the `setup.sh` script from this repository.
-
-First, you need to make `setup.sh` executable.
-
-### Method 1
+### CLI:
 
 Open a terminal, then run `chmod +x /path/to/setup.sh`
 
 Then, `/path/to/setup.sh /path/to/DaVinci_Resolve_versionnumber_Linux.run`
 
-### Method 2
+### GUI:
 
 If you're more comfortable in a GUI:
 
@@ -54,11 +50,9 @@ In the newly-opened terminal window, enter the command below. Replace 'version' 
 
 Then, follow any further prompts in the installation script.
 
-## Manual Setup
+### Manual
 
-First, download DaVinci Resolve from the link above. Then, extract the archive. Open a terminal in the directory that contains the `DaVinci_Resolve_<version>_Linux.run` file (\<version\> will correspond to the version of DaVinci Resolve you downloaded).
-
-In your terminal,
+First, get davincibox set up.
 
 Distrobox:
 
@@ -74,30 +68,16 @@ toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
 toolbox enter davincibox
 ```
 
-Install Resolve (again, replace \<version\> with the version number in the filename):
+Then, run `setup-davinci /path/to/DaVinci_Resolve_version_Linux.run` from within the container, or
+
+Distrobox:
 
 ```
-./DaVinci_Resolve_<version>_Linux.run --appimage-extract
-cd squashfs-root/
-sudo ./AppRun -i -a -y
+distrobox enter davincibox -- setup-davinci /path/to/DaVinci_Resolve_version_Linux.run
 ```
 
-At the time of writing, there is an issue where DaVinci Resolve bundles its own copy of libglib-2.0, but it needs a newer version than what is bundled. To work around this, you can remove Resolve's copy so that it uses the container's version instead:
+Toolbox:
 
 ```
-sudo rm /opt/resolve/libs/libglib-2.0.*
+toolbox run --container davincibox setup-davinci /path/to/DaVinci_Resolve_version_Linux.run
 ```
-
-After installation completes, check that Resolve runs:
-
-```
-/opt/resolve/bin/resolve
-```
-
-Finally, if using `distrobox`, run the following command to launch Resolve from your desktop environment's application launcher:
-
-```
-distrobox-export --app /opt/resolve/bin/resolve
-```
-
-Instructions for a similar result with `toolbox` will be added here later. In the meantime, you can reference [bluesabre's Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296) to see how.

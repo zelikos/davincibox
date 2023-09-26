@@ -21,8 +21,7 @@ then
             echo "Toolbox found."
         fi
     else
-        # UNCOMMENT AFTER TESTING
-        #use_distrobox=true
+        use_distrobox=true
         echo "Distrobox found."
     fi
 else

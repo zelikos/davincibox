@@ -1,0 +1,61 @@
+#!/bin/bash
+
+installer=""
+valid=false
+extract_success=false
+add_launcher=false
+
+if [[ $1 ]]
+then
+    installer=$(readlink -e $1)
+    if [[ -f $installer ]]
+    then
+        valid=true
+    else
+        echo "${1} is not a valid file."
+    fi
+else
+    echo "Please provide path to DaVinci Resolve installer file."
+    echo "e.g. setup-davinci /path/to/DaVinci_Resolve_18.5.1_Linux.run"
+    exit
+fi
+
+if [[ $valid ]]
+then
+    echo "Extracting ${installer} ..."
+    $installer --appimage-extract
+    if [[ $? -eq 0 ]]
+    then
+        extract_success=true
+        sudo squashfs-root/AppRun -i -a -y
+        # Workaround for an issue with Resolve's included libglib-2.0
+        # May not be needed in the future
+        sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
+        rm -rf squashfs-root/
+    else
+        echo "${installer} could not be extracted."
+        echo "Please double-check that it is a valid DaVinci Resolve installer."
+        exit
+    fi
+fi
+
+if [[ $extract_success ]]
+then
+    # TODO: Better phrasing
+    echo "Add DaVinci Resolve launcher? y/N"
+    read response
+    case "$response" in
+        "y")    add_launcher=true;;
+        "Y")    add_launcher=true;;
+        *)      add_launcher=false;;
+    esac
+
+    if [[ $add_launcher ]]
+    then
+        /usr/bin/add-davinci-launcher
+    else
+        echo "To add a launcher for DaVinci Resolve later,"
+        echo "run add-davinci-launcher from within the container."
+        exit
+    fi
+fi

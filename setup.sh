@@ -3,7 +3,7 @@
 use_distrobox=false
 
 # Check that argument containing DaVinci_Resolve_version_LInux.run was provided
-if [[ $1 ]]
+if [[ -f $(readlink -e $1) ]]
 then
     # Check if distrobox is installed
     if ! command -v distrobox &> /dev/null
@@ -44,65 +44,10 @@ else
     toolbox run --container davincibox echo "davincibox initialized"
 fi
 
-# Extract DaVinci Resolve installer
-$1 --appimage-extract
-if [ $? -eq 0 ]
+# Run setup-davinci
+if $use_distrobox
 then
-    if $use_distrobox
-    then
-        distrobox enter davincibox -- sudo squashfs-root/AppRun -i -a -y
-        # Workaround for an issue with Resolve's included libglib-2.0
-        # May not be needed in the future
-        distrobox enter davincibox -- sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-    else
-        toolbox run --container davincibox sudo squashfs-root/AppRun -i -a -y
-        toolbox run --container davincibox sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-    fi
+    distrobox enter davincibox -- setup-davinci $1
 else
-    echo "${1} is not a DaVinci Resolve installer."
-    exit
-fi
-
-# Cleanup
-rm -rf squashfs-root/
-
-# Prompt user about adding desktop launcher
-add_launcher=false
-
-# TODO: Better phrasing
-echo "Add DaVinci Resolve launcher? y/N"
-echo "Note: This currently requires administrative priveleges"
-read response
-case "$response" in
-    "y")    add_launcher=true;;
-    "Y")    add_launcher=true;;
-    *)      add_launcher=false;;
-esac
-
-if $add_launcher
-then
-    if $use_distrobox
-    then
-        # Because the .desktop file distrobox creatres requires the directory to exist
-        pkexec mkdir /opt/resolve
-        distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve
-    else
-        echo "Launcher support for Toolbox is WIP."
-    fi
-else
-    echo "If you would like to create a launcher later,"
-    echo "run the following command:"
-    if $use_distrobox
-    then
-        echo "distrobox enter davincibox -- distrobox-export --app /opt/resolve/bin/resolve"
-    else
-        echo "Launcher support for Toolbox is WIP."
-    fi
-    echo ""
-    echo "Otherwise, to run DaVinci Resolve from the CLI, use:"
-    if &use_distrobox
-    then
-        echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
-    else
-        echo "toolbox run --container davincibox /opt/resolve/bin/resolve"
+    toolbox run --container davincibox setup-davinci $1
 fi

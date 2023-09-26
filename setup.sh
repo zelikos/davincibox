@@ -100,7 +100,7 @@ else
     fi
     echo ""
     echo "Otherwise, to run DaVinci Resolve from the CLI, use:"
-    if &use_distrobox
+    if $use_distrobox
     then
         echo "distrobox enter davincibox -- /opt/resolve/bin/resolve"
     else

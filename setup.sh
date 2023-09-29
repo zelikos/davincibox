@@ -1,6 +1,6 @@
 #!/bin/bash
 
-use_distrobox=false
+container_type=""
 
 # Check that argument containing DaVinci_Resolve_version_LInux.run was provided
 if [[ -f $(readlink -e $1) ]]
@@ -17,11 +17,11 @@ then
             echo "Please install either distrobox or toolbox to use this script."
             exit
         else
-            use_distrobox=false
+            container_type="toolbox"
             echo "Toolbox found."
         fi
     else
-        use_distrobox=true
+        container_type="distrobox"
         echo "Distrobox found."
     fi
 else
@@ -33,7 +33,7 @@ fi
 # Create davincibox on user's system
 echo "Setting up davincibox..."
 
-if $use_distrobox
+if [[ $container_type == "distrobox" ]]
 then
     distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
     # Start up the container now after creation,
@@ -45,7 +45,7 @@ else
 fi
 
 # Run setup-davinci
-if $use_distrobox
+if [[ $container_type == "distrobox" ]]
 then
     distrobox enter davincibox -- setup-davinci $1
 else

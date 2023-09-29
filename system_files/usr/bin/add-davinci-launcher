@@ -4,13 +4,14 @@ if [[ $1 ]]
 then
     if [[ $1 == "--remove"  ]]
     then
-        # TODO
+        echo "TODO"
     else
         echo "Argument ${1} not recognized."
         echo "Did you mean --remove ?"
     fi
 else
     # Copy graphics
+    echo "Copying graphics..."
     mkdir -p ~/.local/share/resolve/graphics
     cp /opt/resolve/graphics/DV_* ~/.local/share/resolve/graphics
 
@@ -24,6 +25,7 @@ else
     cp /opt/resolve/graphics/blackmagicraw-speedtest_256x256_apps.png ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png
     cp /opt/resolve/graphics/blackmagicraw-speedtest_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
 
+    echo "Setting up launcher..."
     # Copy and adjust launchers
     mkdir -p ~/.local/share/applications
     cp /opt/resolve/share/*.desktop ~/.local/share/applications
@@ -31,4 +33,12 @@ else
     sed -i 's/Exec=/Exec=toolbox run --release 37 /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
     sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+
+    echo "Launcher setup complete."
+    echo "You can now launch DaVinci Resolve from your application menu."
+    echo ""
+    echo "If you want to remove the launchers later,"
+    echo "re-run this command with the --remove argument,"
+    echo "or delete the launchers directly from:"
+    echo "$HOME/.local/share/applications"
 fi

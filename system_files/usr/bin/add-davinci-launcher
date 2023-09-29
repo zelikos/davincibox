@@ -38,9 +38,14 @@ then
     cp /opt/resolve/graphics/blackmagicraw-speedtest_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
 
     # Copy and adjust launchers
-    echo "Setting up launcher..."
+    echo "Setting up launchers..."
     mkdir -p ~/.local/share/applications
     cp /opt/resolve/share/*.desktop ~/.local/share/applications
+
+    # Remove DaVinci Resolve uninstaller, as we don't want to cause confusion.
+    # e.g. A user might think running the uninstaller also removes the container
+    rm ~/.local/share/applications/DaVinciResolveInstaller.desktop
+
     sed -i 's/RESOLVE_INSTALL_LOCATION/\/opt\/resolve/' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
     sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop

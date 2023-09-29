@@ -68,16 +68,22 @@ toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
 toolbox enter davincibox
 ```
 
-Then, run `setup-davinci /path/to/DaVinci_Resolve_version_Linux.run` from within the container, or
+Then, run `setup-davinci /path/to/DaVinci_Resolve_version_Linux.run distrobox/toolbox` from within the container
+
+e.g.
 
 Distrobox:
 
 ```
-distrobox enter davincibox -- setup-davinci /path/to/DaVinci_Resolve_version_Linux.run
+distrobox enter davincibox -- setup-davinci /path/to/DaVinci_Resolve_version_Linux.run distrobox
 ```
 
 Toolbox:
 
 ```
-toolbox run --container davincibox setup-davinci /path/to/DaVinci_Resolve_version_Linux.run
+toolbox run --container davincibox setup-davinci /path/to/DaVinci_Resolve_version_Linux.run toolbox
 ```
+
+The suffix at the end is for the `add-davinci-launcher` script. If omitted, setup will still run, but adding the launcher to your application menu won't work.
+
+You can still run `add-davinci-launcher` separately, as either `add-davinci-launcher distrobox` or `add-davinci-launcher toolbox`, depending on what you're using.

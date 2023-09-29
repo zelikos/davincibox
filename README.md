@@ -90,6 +90,8 @@ You can still run `add-davinci-launcher` separately, as either `add-davinci-laun
 
 ## Uninstallation
 
+Run `./setup.sh remove`, or
+
 Distrobox:
 
 ```

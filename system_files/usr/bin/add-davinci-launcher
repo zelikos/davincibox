@@ -30,7 +30,7 @@ else
     mkdir -p ~/.local/share/applications
     cp /opt/resolve/share/*.desktop ~/.local/share/applications
     sed -i 's/RESOLVE_INSTALL_LOCATION/\/opt\/resolve/' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
-    sed -i 's/Exec=/Exec=toolbox run --release 37 /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    sed -i 's/Exec=/Exec=\/usr\/bin\/distrobox enter davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
     sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
 

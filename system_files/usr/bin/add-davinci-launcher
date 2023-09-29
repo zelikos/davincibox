@@ -3,10 +3,26 @@
 container_type="distrobox"
 setup_launcher=true
 
-if [[ $1 == "--remove"  ]]
+if [[ $1 == "remove"  ]]
 then
     setup_launcher=false
-    echo "TODO"
+    echo "Removing DaVinci Resolve launcher..."
+
+    # Remoe graphics
+    rm -r ~/.local/share/resolve/graphics
+    rm ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-clip.png
+    rm ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-clip.png
+    rm ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-sidecar.png
+    rm ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-sidecar.png
+    rm ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-player.png
+    rm ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-player.png
+    rm ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png
+    rm ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
+
+    # Remove launchers
+    rm ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+
+    echo "DaVinci Resolve launcher removed."
 else
     case $1 in
         "toolbox")      container_type="toolbox";
@@ -15,7 +31,7 @@ else
                         echo "Adding launcher for Toolbox...";;
         "distrobox")    echo "Adding launcher for Distrobox...";;
         *)              echo "${1} not recognized.";
-                        echo "Did you mean toolbox, distrobox, or --remove?"
+                        echo "Did you mean toolbox, distrobox, or remove?"
                         setup_launcher=false;;
     esac
 fi
@@ -43,7 +59,7 @@ then
     cp /opt/resolve/share/*.desktop ~/.local/share/applications
 
     # Remove DaVinci Resolve uninstaller, as we don't want to cause confusion.
-    # e.g. A user might think running the uninstaller also removes the container
+    # e.g. It may uninstall Resolve from the container, but the launchers would remain
     rm ~/.local/share/applications/DaVinciResolveInstaller.desktop
 
     sed -i 's/RESOLVE_INSTALL_LOCATION/\/opt\/resolve/' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
@@ -62,7 +78,7 @@ then
     echo "You can now launch DaVinci Resolve from your application menu."
     echo ""
     echo "If you want to remove the launchers later,"
-    echo "re-run this command with the --remove argument,"
+    echo "re-run this command with the remove argument,"
     echo "or delete the launchers directly from:"
     echo "$HOME/.local/share/applications"
 fi

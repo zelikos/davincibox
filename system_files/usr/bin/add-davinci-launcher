@@ -1,3 +1,34 @@
 #!/bin/bash
 
-echo "TODO"
+if [[ $1 ]]
+then
+    if [[ $1 == "--remove"  ]]
+    then
+        # TODO
+    else
+        echo "Argument ${1} not recognized."
+        echo "Did you mean --remove ?"
+    fi
+else
+    # Copy graphics
+    mkdir -p ~/.local/share/resolve/graphics
+    cp /opt/resolve/graphics/DV_* ~/.local/share/resolve/graphics
+
+    mkdir -p ~/.local/share/icons/hicolor/{48x48,256x256}/{apps,mimetypes}
+    cp /opt/resolve/graphics/application-x-braw-clip_256x256_mimetypes.png ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-clip.png
+    cp /opt/resolve/graphics/application-x-braw-clip_48x48_mimetypes.png ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-clip.png
+    cp /opt/resolve/graphics/application-x-braw-sidecar_256x256_mimetypes.png ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-sidecar.png
+    cp /opt/resolve/graphics/application-x-braw-sidecar_48x48_mimetypes.png ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-sidecar.png
+    cp /opt/resolve/graphics/blackmagicraw-player_256x256_apps.png ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-player.png
+    cp /opt/resolve/graphics/blackmagicraw-player_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-player.png
+    cp /opt/resolve/graphics/blackmagicraw-speedtest_256x256_apps.png ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png
+    cp /opt/resolve/graphics/blackmagicraw-speedtest_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
+
+    # Copy and adjust launchers
+    mkdir -p ~/.local/share/applications
+    cp /opt/resolve/share/*.desktop ~/.local/share/applications
+    sed -i 's/RESOLVE_INSTALL_LOCATION/\/opt\/resolve/' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    sed -i 's/Exec=/Exec=toolbox run --release 37 /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
+    sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+fi

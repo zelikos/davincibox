@@ -22,24 +22,43 @@ else
     echo "Distrobox found."
 fi
 
-# Create davincibox on user's system
-echo "Setting up davincibox..."
 
-if [[ $container_type == "distrobox" ]]
+if [[ $1 == "remove" ]]
 then
-    distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
-    # Start up the container now after creation,
-    # rather than during the later steps
-    distrobox enter davincibox -- echo "davincibox initialized"
+    echo "Removing DaVinci Resolve and davincibox..."
+    if [[ $container_type == "distrobox" ]]
+    then
+        distrobox enter davincibox -- add-davinci-launcher remove
+        distrobox stop davincibox
+        distrobox rm davincibox
+    elif [[ $container_type == "toolbox" ]]
+    then
+        toolbox run --container davincibox add-davinci-launcher remove
+        podman container stop davincibox
+        toolbox rm davincibox
+    fi
+    echo "davincibox removed."
 else
-    toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
-    toolbox run --container davincibox echo "davincibox initialized"
-fi
+    # Create davincibox on user's system
+    echo "Setting up davincibox..."
 
-# Run setup-davinci
-if [[ $container_type == "distrobox" ]]
-then
-    distrobox enter davincibox -- setup-davinci $1 $container_type
-else
-    toolbox run --container davincibox setup-davinci $1 $container_type
+    if [[ $container_type == "distrobox" ]]
+    then
+        distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
+        # Start up the container now after creation,
+        # rather than during the later steps
+        distrobox enter davincibox -- echo "davincibox initialized"
+    else
+        toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
+        toolbox run --container davincibox echo "davincibox initialized"
+    fi
+
+    # Run setup-davinci
+    if [[ $container_type == "distrobox" ]]
+    then
+        distrobox enter davincibox -- setup-davinci $1 $container_type
+    else
+        toolbox run --container davincibox setup-davinci $1 $container_type
+    fi
+
 fi

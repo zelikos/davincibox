@@ -42,12 +42,12 @@ fi
 if [[ $extract_success = true ]]
 then
     # TODO: Better phrasing
-    echo "Add DaVinci Resolve launcher? y/N"
+    echo "Add DaVinci Resolve launcher? Y/n"
     read response
     case "$response" in
-        "y")    add_launcher=true;;
-        "Y")    add_launcher=true;;
-        *)      add_launcher=false;;
+        "n")    add_launcher=false;;
+        "N")    add_launcher=false;;
+        *)      add_launcher=true;;
     esac
 
     if [[ $add_launcher = true ]]

@@ -47,7 +47,7 @@ fi
 # Run setup-davinci
 if [[ $container_type == "distrobox" ]]
 then
-    distrobox enter davincibox -- setup-davinci $1
+    distrobox enter davincibox -- setup-davinci $1 $container_type
 else
-    toolbox run --container davincibox setup-davinci $1
+    toolbox run --container davincibox setup-davinci $1 $container_type
 fi

@@ -53,12 +53,20 @@ else
         toolbox run --container davincibox echo "davincibox initialized"
     fi
 
-    # Run setup-davinci
-    if [[ $container_type == "distrobox" ]]
+    # Check for installer file validity here instead of above,
+    # because container can still be set up whether the file is valid or not.
+    if [[ -f $(readlink -e $1) ]]
     then
-        distrobox enter davincibox -- setup-davinci $1 $container_type
+        # Run setup-davinci
+        if [[ $container_type == "distrobox" ]]
+        then
+            distrobox enter davincibox -- setup-davinci $1 $container_type
+        else
+            toolbox run --container davincibox setup-davinci $1 $container_type
+        fi
     else
-        toolbox run --container davincibox setup-davinci $1 $container_type
+        echo "${1} is not a valid filename."
+        echo "Re-run this script with a valid DaVinci Resolve installer."
+        echo "e.g. ./setup.sh DaVinci_Resolve_18.5.1_Linux.run"
     fi
-
 fi

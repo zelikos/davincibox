@@ -1,3 +1,84 @@
 #!/bin/bash
 
-echo "TODO"
+container_type="distrobox"
+setup_launcher=true
+
+if [[ $1 == "remove"  ]]
+then
+    setup_launcher=false
+    echo "Removing DaVinci Resolve launcher..."
+
+    # Remoe graphics
+    rm -r ~/.local/share/resolve/graphics
+    rm ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-clip.png
+    rm ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-clip.png
+    rm ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-sidecar.png
+    rm ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-sidecar.png
+    rm ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-player.png
+    rm ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-player.png
+    rm ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png
+    rm ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
+
+    # Remove launchers
+    rm ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+
+    echo "DaVinci Resolve launcher removed."
+else
+    case $1 in
+        "toolbox")      container_type="toolbox";
+                        echo "Adding launcher for Toolbox...";;
+        "toolbx")       container_type="toolbox";
+                        echo "Adding launcher for Toolbox...";;
+        "distrobox")    echo "Adding launcher for Distrobox...";;
+        *)              echo "${1} not recognized.";
+                        echo "Did you mean toolbox, distrobox, or remove?"
+                        setup_launcher=false;;
+    esac
+fi
+
+if [[ $setup_launcher = true ]]
+then
+    # Copy graphics
+    echo "Copying graphics..."
+    mkdir -p ~/.local/share/resolve/graphics
+    cp /opt/resolve/graphics/DV_* ~/.local/share/resolve/graphics
+
+    mkdir -p ~/.local/share/icons/hicolor/{48x48,256x256}/{apps,mimetypes}
+    cp /opt/resolve/graphics/application-x-braw-clip_256x256_mimetypes.png ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-clip.png
+    cp /opt/resolve/graphics/application-x-braw-clip_48x48_mimetypes.png ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-clip.png
+    cp /opt/resolve/graphics/application-x-braw-sidecar_256x256_mimetypes.png ~/.local/share/icons/hicolor/256x256/mimetypes/application-x-braw-sidecar.png
+    cp /opt/resolve/graphics/application-x-braw-sidecar_48x48_mimetypes.png ~/.local/share/icons/hicolor/48x48/mimetypes/application-x-braw-sidecar.png
+    cp /opt/resolve/graphics/blackmagicraw-player_256x256_apps.png ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-player.png
+    cp /opt/resolve/graphics/blackmagicraw-player_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-player.png
+    cp /opt/resolve/graphics/blackmagicraw-speedtest_256x256_apps.png ~/.local/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png
+    cp /opt/resolve/graphics/blackmagicraw-speedtest_48x48_apps.png ~/.local/share/icons/hicolor/48x48/apps/blackmagicraw-speedtest.png
+
+    # Copy and adjust launchers
+    echo "Setting up launchers..."
+    mkdir -p ~/.local/share/applications
+    cp /opt/resolve/share/*.desktop ~/.local/share/applications
+
+    # Remove DaVinci Resolve uninstaller, as we don't want to cause confusion.
+    # e.g. It may uninstall Resolve from the container, but the launchers would remain
+    rm ~/.local/share/applications/DaVinciResolveInstaller.desktop
+
+    sed -i 's/RESOLVE_INSTALL_LOCATION/\/opt\/resolve/' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
+    sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+
+    if [[ $container_type == "toolbox" ]]
+    then
+        sed -i 's/Exec=/Exec=\/usr\/bin\/toolbox run --container davincibox /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    elif [[ $container_type == "distrobox" ]]
+    then
+        sed -i 's/Exec=/Exec=\/usr\/bin\/distrobox-enter -n davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    fi
+
+    echo "Launcher setup complete."
+    echo "You can now launch DaVinci Resolve from your application menu."
+    echo ""
+    echo "If you want to remove the launchers later,"
+    echo "re-run this command with the remove argument,"
+    echo "or delete the launchers directly from:"
+    echo "$HOME/.local/share/applications"
+fi

@@ -20,7 +20,7 @@ else
     exit
 fi
 
-if [[ $valid ]]
+if [[ $valid = true ]]
 then
     echo "Extracting ${installer} ..."
     $installer --appimage-extract
@@ -39,23 +39,26 @@ then
     fi
 fi
 
-if [[ $extract_success ]]
+if [[ $extract_success = true ]]
 then
     # TODO: Better phrasing
-    echo "Add DaVinci Resolve launcher? y/N"
+    echo "Add DaVinci Resolve launcher? Y/n"
     read response
     case "$response" in
-        "y")    add_launcher=true;;
-        "Y")    add_launcher=true;;
-        *)      add_launcher=false;;
+        "n")    add_launcher=false;;
+        "N")    add_launcher=false;;
+        *)      add_launcher=true;;
     esac
 
-    if [[ $add_launcher ]]
+    if [[ $add_launcher = true ]]
     then
-        /usr/bin/add-davinci-launcher
+        /usr/bin/add-davinci-launcher $2
     else
         echo "To add a launcher for DaVinci Resolve later,"
         echo "run add-davinci-launcher from within the container."
+        echo "Note: You will have to specify if it is running for"
+        echo "distrobox or for toolbox."
+        echo "e.g. add-davinci-launcher distrobox"
         exit
     fi
 fi

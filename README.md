@@ -2,6 +2,10 @@
 
 This project aims to provide a ready-to-go container with all of the needed dependencies to install and run DaVinci Resolve, based on information compiled by bluesabre in his [GitHub Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296).
 
+## Disclaimer
+
+I've only been able to test this setup with an AMD RX 6600XT GPU. NVIDIA cards, Intel cards, and other generations of AMD cards are completely untested. See [#21](https://github.com/zelikos/davincibox/issues/21)
+
 ## Requirements
 
 You will need `distrobox` or `toolbox`. Distrobox is highly recommended for ease of use.

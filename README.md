@@ -2,9 +2,15 @@
 
 This project aims to provide a ready-to-go container with all of the needed dependencies to install and run DaVinci Resolve on Linux, based on information compiled by bluesabre in his [GitHub Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296). This is primarily intended for users of image-based systems such as Fedora Silverblue, but can be used on any Linux distro that distrobox is available on.
 
-## Disclaimer
+## Disclaimers
+
+### GPU Support
 
 I've only been able to test this setup with an AMD RX 6600XT GPU. NVIDIA cards, Intel cards, and other generations of AMD cards are completely untested. See [#21](https://github.com/zelikos/davincibox/issues/21)
+
+### DaVinci Resolve Studio
+
+Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https://github.com/zelikos/davincibox/issues/26)
 
 ## Requirements
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/zelikos/davincibox/compare/v1.0.0...v1.0.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* Add pipewire-alsa to fix no audio on some systems ([f6461bf](https://github.com/zelikos/davincibox/commit/f6461bfc1f3f415cde7d71124aafcb40134c6959))
+
 ## 1.0.0 (2023-09-29)
 
 

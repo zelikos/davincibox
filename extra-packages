@@ -19,6 +19,7 @@ libXtst
 libXxf86vm
 mesa-libGLU
 mtdev
+pipewire-alsa
 pulseaudio-libs
 rocm-opencl
 xcb-util

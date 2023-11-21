@@ -74,6 +74,14 @@ then
         sed -i 's/Exec=/Exec=\/usr\/bin\/distrobox-enter -n davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     fi
 
+    # Overwrite shortcut created by upstream DaVinci Resolve installer
+    desktop_shortcut=$HOME/Desktop/com.blackmagicdesign.resolve.desktop
+    if [[ -f $desktop_shortcut ]]
+    then
+        echo "Overwriting desktop shortcut..."
+        cp "$HOME/.local/share/applications/DaVinciResolve.desktop" "$desktop_shortcut"
+    fi
+
     echo "Launcher setup complete."
     echo "You can now launch DaVinci Resolve from your application menu."
     echo ""

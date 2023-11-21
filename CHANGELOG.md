@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/zelikos/davincibox/compare/v1.0.2...v1.0.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* Overwrite upstream-added desktop shortcut with corrected version ([#39](https://github.com/zelikos/davincibox/issues/39)) ([8cd66da](https://github.com/zelikos/davincibox/commit/8cd66da618697e4ddc8a94b607b90386fe109c00)), closes [#36](https://github.com/zelikos/davincibox/issues/36)
+* Use QT_QPA_PLATFORM=minimal on AppRun ([#37](https://github.com/zelikos/davincibox/issues/37)) ([e416b06](https://github.com/zelikos/davincibox/commit/e416b06c9f974b510435a77216f9b91822980be5)), closes [#35](https://github.com/zelikos/davincibox/issues/35)
+
 ## [1.0.2](https://github.com/zelikos/davincibox/compare/v1.0.1...v1.0.2) (2023-11-14)
 
 

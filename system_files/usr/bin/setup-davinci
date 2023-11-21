@@ -31,7 +31,8 @@ then
     if [[ $? -eq 0 ]]
     then
         extract_success=true
-        sudo squashfs-root/AppRun -i -a -y
+        # See https://github.com/zelikos/davincibox/issues/35
+        sudo QT_QPA_PLATFORM=minimal squashfs-root/AppRun -i -a -y
         # Workaround for an issue with Resolve's included libglib-2.0
         # May not be needed in the future
         sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4

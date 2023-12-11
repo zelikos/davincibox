@@ -2,6 +2,11 @@
 
 container_type=""
 
+remove_davincibox_container () {
+    podman container stop davincibox
+    podman container rm davincibox
+}
+
 # Check if distrobox is installed
 if ! command -v distrobox &> /dev/null
 then
@@ -25,18 +30,17 @@ fi
 
 if [[ $1 == "remove" ]]
 then
-    echo "Removing DaVinci Resolve and davincibox..."
     if [[ $container_type == "distrobox" ]]
     then
         distrobox enter davincibox -- add-davinci-launcher remove
-        distrobox stop davincibox
-        distrobox rm davincibox
     elif [[ $container_type == "toolbox" ]]
     then
         toolbox run --container davincibox add-davinci-launcher remove
-        podman container stop davincibox
-        toolbox rm davincibox
     fi
+
+    echo "Removing DaVinci Resolve and davincibox..."
+    remove_davincibox_container
+
     echo "davincibox removed."
 else
     # Create davincibox on user's system

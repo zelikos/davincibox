@@ -42,6 +42,11 @@ else
     # Create davincibox on user's system
     echo "Setting up davincibox..."
 
+    # Do this separately here to ensure the latest image is present
+    # before the container is created.
+    # See https://github.com/zelikos/davincibox/issues/26#issuecomment-1850642631
+    podman image pull ghcr.io/zelikos/davincibox:latest
+
     if [[ $container_type == "distrobox" ]]
     then
         distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox

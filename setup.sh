@@ -5,6 +5,8 @@ container_type=""
 remove_davincibox_container () {
     podman container stop davincibox
     podman container rm davincibox
+
+    echo "davincibox removed."
 }
 
 # Check if distrobox is installed
@@ -35,13 +37,10 @@ if [[ $1 == "remove" ]]; then
 
     echo "Removing DaVinci Resolve and davincibox..."
     remove_davincibox_container
-
-    echo "davincibox removed."
 elif [[ $1 == "upgrade" ]]; then
     echo "Removing davincibox container..."
     remove_davincibox_container
 
-    echo "davincibox removed."
     echo "To complete the upgrade, re-run this setup script"
     echo "as you would for a fresh installation."
     echo "e.g. ./setup.sh DaVinci_Resolve_18.5.1_Linux.run"

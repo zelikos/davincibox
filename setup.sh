@@ -37,6 +37,14 @@ if [[ $1 == "remove" ]]; then
     remove_davincibox_container
 
     echo "davincibox removed."
+elif [[ $1 == "upgrade" ]]; then
+    echo "Removing davincibox container..."
+    remove_davincibox_container
+
+    echo "davincibox removed."
+    echo "To complete the upgrade, re-run this setup script"
+    echo "as you would for a fresh installation."
+    echo "e.g. ./setup.sh DaVinci_Resolve_18.5.1_Linux.run"
 else
     # Create davincibox on user's system
     echo "Setting up davincibox..."

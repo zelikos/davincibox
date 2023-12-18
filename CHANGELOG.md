@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/zelikos/davincibox/compare/v1.0.3...v1.1.0) (2023-12-18)
+
+
+### Features
+
+* Simplify and document upgrade process ([#44](https://github.com/zelikos/davincibox/issues/44)) ([420cc5b](https://github.com/zelikos/davincibox/commit/420cc5b049298a8076d368c425b5a07d07da79db))
+
 ## [1.0.3](https://github.com/zelikos/davincibox/compare/v1.0.2...v1.0.3) (2023-11-21)
 
 

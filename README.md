@@ -98,6 +98,20 @@ The suffix at the end is for the `add-davinci-launcher` script. If omitted, setu
 
 You can still run `add-davinci-launcher` separately, as either `add-davinci-launcher distrobox` or `add-davinci-launcher toolbox`, depending on what you're using.
 
+## Upgrading
+
+Upgrading requires re-creating the davincibox container with the newest version of the image.
+
+If a new version of davincibox is available and you want to upgrade, you can do so manually or with `setup.sh`.
+
+### `setup.sh`
+
+Run `setup.sh upgrade`, then follow the installation steps above.
+
+### Manual
+
+See the Uninstallation section below, then go through manual setup again.
+
 ## Uninstallation
 
 Run `./setup.sh remove`, or
@@ -105,7 +119,9 @@ Run `./setup.sh remove`, or
 Distrobox:
 
 ```
+# If you are upgrading, you can avoid this line
 distrobox enter davincibox -- add-davinci-launcher remove
+
 distrobox stop davincibox
 distrobox rm davincibox
 ```
@@ -113,7 +129,9 @@ distrobox rm davincibox
 Toolbox:
 
 ```
+# If you are upgrading, you can avoid this line
 toolbox run --container davincibox add-davinci-launcher remove
+
 podman container stop davincibox
 toolbox rm davincibox
 ```

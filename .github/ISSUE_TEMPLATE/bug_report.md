@@ -7,8 +7,17 @@ assignees: ''
 
 ---
 
+**IMPORTANT**
+Before reporting a bug, make sure that you can reproduce it on the latest version of davincibox.
+
+See the [upgrading](https://github.com/zelikos/davincibox#upgrading) section of the README for more information.
+
 **Describe the bug**
 A clear and concise description of what the bug is.
+
+**Installation method used**
+- [ ] `setup.sh`
+- [ ] Manual
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -24,9 +33,8 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+ - Distro: [e.g. Ubuntu 23.10]
+ - GPU: [e.g. AMD Radeon RX 6600 XT]
 
 **Additional context**
 Add any other context about the problem here.

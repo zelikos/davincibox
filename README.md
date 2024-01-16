@@ -110,7 +110,9 @@ Run `setup.sh upgrade`, then follow the installation steps above.
 
 ### Manual
 
-See the Uninstallation section below, then go through manual setup again.
+First, run `podman image pull ghcr.io/zelikos/davincibox:latest`
+
+Then, follow the Uninstallation section below and go through manual setup again.
 
 ## Uninstallation
 

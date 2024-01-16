@@ -7,6 +7,11 @@ assignees: ''
 
 ---
 
+**IMPORTANT**
+Before reporting a bug, make sure that you can reproduce it on the latest version of davincibox.
+
+See the [upgrading](https://github.com/zelikos/davincibox#upgrading) section of the README for more information.
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 

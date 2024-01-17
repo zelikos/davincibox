@@ -16,6 +16,8 @@ Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https:
 
 You will need [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox). Distrobox is highly recommended for ease of use.
 
+You will need [Podman](https://podman.io/)
+
 If using an Nvidia GPU, you will also need the `nvidia-cuda-toolkit` package installed to your system.
 
 which can be installed with `sudo apt install nvidia-cuda-toolkit`

@@ -14,9 +14,9 @@ Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https:
 
 ## Requirements
 
-You will need `distrobox` or `toolbox`. Distrobox is highly recommended for ease of use.
+You will need [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox). Distrobox is highly recommended for ease of use.
 
-If using an Nvidia GPU, you will also need the `nvidia-container-runtime` package installed to your system.
+You will need [Podman](https://podman.io/)
 
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
 

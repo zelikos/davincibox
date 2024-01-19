@@ -18,10 +18,6 @@ You will need [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`
 
 You will need [Podman](https://podman.io/)
 
-If using an Nvidia GPU, you will also need the `nvidia-cuda-toolkit` package installed to your system.
-
-which can be installed with `sudo apt install nvidia-cuda-toolkit`
-
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.

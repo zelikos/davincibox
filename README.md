@@ -14,13 +14,15 @@ Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https:
 
 ## Requirements
 
-You will need [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox). Distrobox is highly recommended for ease of use.
-
-You will need [Podman](https://podman.io/)
+You will need [Podman](https://podman.io/), as well as [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox).
 
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.
+
+### NVIDIA
+
+NVIDIA users will need to install the `nvidia-container-runtime`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
 
 ## Setup
 

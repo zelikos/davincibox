@@ -20,6 +20,10 @@ You will also need the latest release of DaVinci Resolve from [Blackmagic's webs
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.
 
+### NVIDIA
+
+NVIDIA users will need to install the `nvidia-container-runtime`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
+
 ## Setup
 
 ### CLI:

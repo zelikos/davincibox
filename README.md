@@ -14,9 +14,7 @@ Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https:
 
 ## Requirements
 
-You will need [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox). Distrobox is highly recommended for ease of use.
-
-You will need [Podman](https://podman.io/)
+You will need [Podman](https://podman.io/), as well as [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox).
 
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
 

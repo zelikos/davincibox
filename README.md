@@ -22,7 +22,7 @@ If you're less comfortable in the CLI, I recommend using the `setup.sh` script f
 
 ### NVIDIA
 
-NVIDIA users will need to install the `nvidia-container-runtime`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
+NVIDIA users will need to install the `nvidia-container-toolkit`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
 
 ## Setup
 

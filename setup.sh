@@ -71,10 +71,11 @@ else
         $1 --appimage-extract
         if [[ $? -eq 0 ]]; then
           # Run setup-davinci
+          extracted_installer="squashfs-root/AppRun"
           if [[ $container_type == "distrobox" ]]; then
-              distrobox enter davincibox -- setup-davinci $1 $container_type
+              distrobox enter davincibox -- setup-davinci $extracted_installer $container_type
           else
-              toolbox run --container davincibox setup-davinci $1 $container_type
+              toolbox run --container davincibox setup-davinci $extracted_installer $container_type
           fi
           rm -rf squashfs-root/
         else

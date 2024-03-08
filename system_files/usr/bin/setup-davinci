@@ -2,7 +2,7 @@
 
 installer=""
 valid=false
-extract_success=false
+install_success=false
 add_launcher=false
 
 gdk_pixbuf_tmp_dir=/tmp/gdk-pixbuf
@@ -19,24 +19,20 @@ then
         echo "${1} is not a valid file."
     fi
 else
-    echo "Please provide path to DaVinci Resolve installer file."
-    echo "e.g. setup-davinci /path/to/DaVinci_Resolve_18.5.1_Linux.run"
+    echo "Please provide the path to the extracted DaVinci Resolve installer file."
+    echo "e.g. setup-davinci squashfs-root/AppRun"
     exit
 fi
 
 if [[ $valid = true ]]
 then
-    echo "Extracting ${installer} ..."
-    $installer --appimage-extract
-    if [[ $? -eq 0 ]]
-    then
-        extract_success=true
-        # See https://github.com/zelikos/davincibox/issues/35
-        sudo QT_QPA_PLATFORM=minimal squashfs-root/AppRun -i -a -y
+    # See https://github.com/zelikos/davincibox/issues/35
+    sudo QT_QPA_PLATFORM=minimal $installer -i -a -y
+    if [[ $? -eq 0 ]]; then
+        install_success=true
         # Workaround for an issue with Resolve's included libglib-2.0
         # May not be needed in the future
         sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-        rm -rf squashfs-root/
         # Fix for: gdk_pixbuf undefined symbol: g_task_set_static_name
         # Thanks to MiMillieuh https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/ju9ygqx
         mkdir -p $gdk_pixbuf_tmp_dir
@@ -44,14 +40,10 @@ then
         rpm2cpio $gdk_pixbuf_tmp_dir/$fc38_gdk_pixbuf_package | cpio -idmv -D $gdk_pixbuf_tmp_dir
         sudo cp -r $gdk_pixbuf_tmp_dir/usr/lib64/* /opt/resolve/libs/
         rm -rf $gdk_pixbuf_tmp_dir
-    else
-        echo "${installer} could not be extracted."
-        echo "Please double-check that it is a valid DaVinci Resolve installer."
-        exit
     fi
 fi
 
-if [[ $extract_success = true ]]
+if [[ $install_success = true ]]
 then
     # TODO: Better phrasing
     echo "Add DaVinci Resolve launcher? Y/n"

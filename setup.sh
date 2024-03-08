@@ -65,12 +65,24 @@ else
 
     # Check for installer file validity here instead of above,
     # because container can still be set up whether the file is valid or not.
-    if [[ -f $(readlink -e $1) ]]; then
-        # Run setup-davinci
-        if [[ $container_type == "distrobox" ]]; then
-            distrobox enter davincibox -- setup-davinci $1 $container_type
+    installer=$(readlink -e $1)
+    if [[ -f $installer ]]; then
+        # Extract DaVinci installer
+        echo "Extracting ${installer} ..."
+        $installer --appimage-extract
+        if [[ $? -eq 0 ]]; then
+          # Run setup-davinci
+          extracted_installer="squashfs-root/AppRun"
+          if [[ $container_type == "distrobox" ]]; then
+              distrobox enter davincibox -- setup-davinci $extracted_installer $container_type
+          else
+              toolbox run --container davincibox setup-davinci $extracted_installer $container_type
+          fi
+          rm -rf squashfs-root/
         else
-            toolbox run --container davincibox setup-davinci $1 $container_type
+            echo "${installer} could not be extracted."
+            echo "Please double-check that it is a valid DaVinci Resolve installer."
+            exit
         fi
     else
         echo "${1} is not a valid filename."

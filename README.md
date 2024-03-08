@@ -70,17 +70,15 @@ Distrobox:
 
 ```
 distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
-distrobox enter davincibox
 ```
 
 Toolbox:
 
 ```
 toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
-toolbox enter davincibox
 ```
 
-Run `--appimage-extract` on your DaVinci Resolve installer
+On the host, run `--appimage-extract` on your DaVinci Resolve installer
 
 ```
 /path/to/DaVinci_Resolve_version_Linux.run --appimage-extract

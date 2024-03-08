@@ -2,7 +2,7 @@
 
 installer=""
 valid=false
-# extract_success=false
+install_success=false
 add_launcher=false
 
 gdk_pixbuf_tmp_dir=/tmp/gdk-pixbuf
@@ -28,19 +28,22 @@ if [[ $valid = true ]]
 then
     # See https://github.com/zelikos/davincibox/issues/35
     sudo QT_QPA_PLATFORM=minimal $installer -i -a -y
-    # Workaround for an issue with Resolve's included libglib-2.0
-    # May not be needed in the future
-    sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-    # Fix for: gdk_pixbuf undefined symbol: g_task_set_static_name
-    # Thanks to MiMillieuh https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/ju9ygqx
-    mkdir -p $gdk_pixbuf_tmp_dir
-    wget $fc38_gdk_pixbuf_url -P $gdk_pixbuf_tmp_dir
-    rpm2cpio $gdk_pixbuf_tmp_dir/$fc38_gdk_pixbuf_package | cpio -idmv -D $gdk_pixbuf_tmp_dir
-    sudo cp -r $gdk_pixbuf_tmp_dir/usr/lib64/* /opt/resolve/libs/
-    rm -rf $gdk_pixbuf_tmp_dir
+    if [[ $? -eq 0 ]]; then
+        install_success=true
+        # Workaround for an issue with Resolve's included libglib-2.0
+        # May not be needed in the future
+        sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
+        # Fix for: gdk_pixbuf undefined symbol: g_task_set_static_name
+        # Thanks to MiMillieuh https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/ju9ygqx
+        mkdir -p $gdk_pixbuf_tmp_dir
+        wget $fc38_gdk_pixbuf_url -P $gdk_pixbuf_tmp_dir
+        rpm2cpio $gdk_pixbuf_tmp_dir/$fc38_gdk_pixbuf_package | cpio -idmv -D $gdk_pixbuf_tmp_dir
+        sudo cp -r $gdk_pixbuf_tmp_dir/usr/lib64/* /opt/resolve/libs/
+        rm -rf $gdk_pixbuf_tmp_dir
+    fi
 fi
 
-if [[ $extract_success = true ]]
+if [[ $install_success = true ]]
 then
     # TODO: Better phrasing
     echo "Add DaVinci Resolve launcher? Y/n"

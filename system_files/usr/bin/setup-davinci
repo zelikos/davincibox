@@ -2,7 +2,7 @@
 
 installer=""
 valid=false
-extract_success=false
+# extract_success=false
 add_launcher=false
 
 gdk_pixbuf_tmp_dir=/tmp/gdk-pixbuf
@@ -19,16 +19,15 @@ then
         echo "${1} is not a valid file."
     fi
 else
-    echo "Please provide path to DaVinci Resolve installer file."
-    echo "e.g. setup-davinci /path/to/DaVinci_Resolve_18.5.1_Linux.run"
+    echo "Please provide the path to the extracted DaVinci Resolve installer file."
+    echo "e.g. setup-davinci squashfs-root/AppRun"
     exit
 fi
 
 if [[ $valid = true ]]
 then
-    extract_success=true
     # See https://github.com/zelikos/davincibox/issues/35
-    sudo QT_QPA_PLATFORM=minimal squashfs-root/AppRun -i -a -y
+    sudo QT_QPA_PLATFORM=minimal $installer -i -a -y
     # Workaround for an issue with Resolve's included libglib-2.0
     # May not be needed in the future
     sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4

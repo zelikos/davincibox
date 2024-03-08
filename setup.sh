@@ -65,10 +65,11 @@ else
 
     # Check for installer file validity here instead of above,
     # because container can still be set up whether the file is valid or not.
-    if [[ -f $(readlink -e $1) ]]; then
+    installer=$(readlink -e $1)
+    if [[ -f $installer ]]; then
         # Extract DaVinci installer
         echo "Extracting ${installer} ..."
-        $1 --appimage-extract
+        $installer --appimage-extract
         if [[ $? -eq 0 ]]; then
           # Run setup-davinci
           extracted_installer="squashfs-root/AppRun"

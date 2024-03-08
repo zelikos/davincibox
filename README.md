@@ -80,7 +80,13 @@ toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
 toolbox enter davincibox
 ```
 
-Then, run `setup-davinci /path/to/DaVinci_Resolve_version_Linux.run distrobox/toolbox` from within the container
+Run `--appimage-extract` on your DaVinci Resolve installer
+
+```
+/path/to/DaVinci_Resolve_version_Linux.run --appimage-extract
+```
+
+Then, run `setup-davinci squashfs-root/AppRun distrobox/toolbox` from within the container
 
 e.g.
 
@@ -99,6 +105,8 @@ toolbox run --container davincibox setup-davinci /path/to/DaVinci_Resolve_versio
 The suffix at the end is for the `add-davinci-launcher` script. If omitted, setup will still run, but adding the launcher to your application menu won't work.
 
 You can still run `add-davinci-launcher` separately, as either `add-davinci-launcher distrobox` or `add-davinci-launcher toolbox`, depending on what you're using.
+
+After installation completes, you can remove the `squashfs-root` directory.
 
 ## Upgrading
 

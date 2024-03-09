@@ -68,10 +68,10 @@ then
 
     if [[ $container_type == "toolbox" ]]
     then
-        sed -i 's/Exec=/Exec=\/usr\/bin\/toolbox run --container davincibox /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+        sed -i 's/Exec=/Exec=env QT_QPA_PLATFORM=xcb \/usr\/bin\/toolbox run --container davincibox /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     elif [[ $container_type == "distrobox" ]]
     then
-        sed -i 's/Exec=/Exec=\/usr\/bin\/distrobox-enter -n davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+        sed -i 's/Exec=/Exec=env QT_QPA_PLATFORM=xcb \/usr\/bin\/distrobox-enter -n davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
     fi
 
     # Overwrite shortcut created by upstream DaVinci Resolve installer

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/zelikos/davincibox/compare/v1.0.3...v1.1.0) (2024-03-09)
+
+
+### Features
+
+* Simplify and document upgrade process ([#44](https://github.com/zelikos/davincibox/issues/44)) ([420cc5b](https://github.com/zelikos/davincibox/commit/420cc5b049298a8076d368c425b5a07d07da79db))
+
+
+### Bug Fixes
+
+* Set "env QT_QPA_PLATFORM=xcb" in launcher ([#61](https://github.com/zelikos/davincibox/issues/61)) ([a93fb05](https://github.com/zelikos/davincibox/commit/a93fb05e23bb755ec6e0a8a3a915181a87c641ba)), closes [#59](https://github.com/zelikos/davincibox/issues/59)
+
 ## [1.0.3](https://github.com/zelikos/davincibox/compare/v1.0.2...v1.0.3) (2023-11-21)
 
 

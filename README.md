@@ -91,13 +91,13 @@ e.g.
 Distrobox:
 
 ```
-distrobox enter davincibox -- setup-davinci /path/to/DaVinci_Resolve_version_Linux.run distrobox
+distrobox enter davincibox -- setup-davinci squashfs-root/AppRun distrobox
 ```
 
 Toolbox:
 
 ```
-toolbox run --container davincibox setup-davinci /path/to/DaVinci_Resolve_version_Linux.run toolbox
+toolbox run --container davincibox setup-davinci squashfs-root/AppRun toolbox
 ```
 
 The suffix at the end is for the `add-davinci-launcher` script. If omitted, setup will still run, but adding the launcher to your application menu won't work.

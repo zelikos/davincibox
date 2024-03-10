@@ -6,11 +6,11 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 ### GPU Support
 
-I've only been able to test this setup with an AMD RX 6600XT GPU. NVIDIA cards, Intel cards, and other generations of AMD cards are completely untested. See [#21](https://github.com/zelikos/davincibox/issues/21)
+I've only been able to test this setup with an AMD RX 6600XT GPU. Other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
 
 ### DaVinci Resolve Studio
 
-Davincibox has **not** been tested with DaVinci Resolve Studio. See [#26](https://github.com/zelikos/davincibox/issues/26)
+Davincibox has had limited testing with DaVinci Resolve Studio. Use at your own risk. See [#26](https://github.com/zelikos/davincibox/issues/26)
 
 ## Requirements
 

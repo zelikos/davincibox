@@ -1,0 +1,3 @@
+#!/bin/bash
+
+QT_QPA_PLATFORM=xcb RUSTICL_ENABLE=radeonsi,iris,nouveau OCL_ICD_VENDORS=rusticl.icd /opt/resolve/bin/resolve

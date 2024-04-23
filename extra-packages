@@ -18,6 +18,7 @@ libXrandr
 libXtst
 libXxf86vm
 mesa-libGLU
+mesa-libOpenCL
 mtdev
 pipewire-alsa
 pulseaudio-libs

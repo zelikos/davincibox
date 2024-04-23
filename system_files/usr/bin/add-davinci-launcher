@@ -1,6 +1,7 @@
 #!/bin/bash
 
 container_type="distrobox"
+container_run_command=""
 setup_launcher=true
 
 if [[ $1 == "remove"  ]]
@@ -66,13 +67,13 @@ then
     sed -i "s,Icon=/opt/resolve/graphics,Icon=$HOME/.local/share/resolve/graphics," ~/.local/share/applications/DaVinci*.desktop
     sed -i "s,Path=.*,Path=$HOME," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
 
-    if [[ $container_type == "toolbox" ]]
-    then
-        sed -i 's/Exec=/Exec=env QT_QPA_PLATFORM=xcb \/usr\/bin\/toolbox run --container davincibox /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
-    elif [[ $container_type == "distrobox" ]]
-    then
-        sed -i 's/Exec=/Exec=env QT_QPA_PLATFORM=xcb \/usr\/bin\/distrobox-enter -n davincibox -- /' ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    if [[ $container_type == "toolbox" ]]; then
+        container_run_command="/usr/bin/toolbox run -c davincibox"
+    elif [[ $container_type == "distrobox" ]]; then
+        container_run_command="/usr/bin/distrobox-enter -n davincibox --"
     fi
+
+    sed -i "s,Exec=/opt/resolve/bin/resolve,Exec=$container_run_command /usr/bin/run-davinci," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
 
     # Overwrite shortcut created by upstream DaVinci Resolve installer
     desktop_shortcut=$HOME/Desktop/com.blackmagicdesign.resolve.desktop

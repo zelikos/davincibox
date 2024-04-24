@@ -27,7 +27,7 @@ fi
 if [[ $valid = true ]]
 then
     # See https://github.com/zelikos/davincibox/issues/35
-    sudo QT_QPA_PLATFORM=minimal $installer -i -a -y
+    sudo QT_QPA_PLATFORM=minimal SKIP_PACKAGE_CHECK=1 $installer -i -a -y
     if [[ $? -eq 0 ]]; then
         install_success=true
         # Workaround for an issue with Resolve's included libglib-2.0

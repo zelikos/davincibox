@@ -26,6 +26,7 @@ Currently, davincibox uses ROCm by default for AMD GPUs. However, [GPU support i
 
 If you experience issues using ROCm and would like to test rusticl:
 
+- **Make sure davincibox is [up-to-date](https://github.com/zelikos/davincibox?tab=readme-ov-file#amd)**
 - Follow the davincibox setup instructions below as normal
 - Run DaVinci Resolve with:
     - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci rusticl`

@@ -20,6 +20,19 @@ You will also need the latest release of DaVinci Resolve from [Blackmagic's webs
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.
 
+### AMD
+
+Currently, davincibox uses ROCm by default for AMD GPUs. However, [GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus), and some users may have reported [issues](https://github.com/zelikos/davincibox/issues/65) when using it. Davincibox now also includes `mesa-libOpenCL`, and so `rusticl` can be tried as an alternative.
+
+If you experience issues using ROCm and would like to test rusticl:
+
+- Follow the davincibox setup instructions below as normal
+- Run DaVinci Resolve with:
+    - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci rusticl`
+    - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci rusticl`
+
+If rusticl does work better for you and you would like to launch Resolve with rusticl automatically, you can also adjust the `DaVinciResolve.desktop` file in `$HOME/.local/share/applications`. Add `rusticl` to the end of the `Exec=` line, before `%u`. e.g. `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci rusticl %u`
+
 ### NVIDIA
 
 NVIDIA users will need to install the `nvidia-container-toolkit`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.

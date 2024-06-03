@@ -24,7 +24,7 @@ If you're less comfortable in the CLI, I recommend using the `setup.sh` script f
 
 Currently, davincibox uses ROCm by default for AMD GPUs. However, [GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus), and some users may have reported [issues](https://github.com/zelikos/davincibox/issues/65) when using it. Davincibox now also includes `mesa-libOpenCL`, and so `rusticl` can be tried as an alternative.
 
-If you experience issues using ROCm and would like to test rusticl:
+If you experience issues using ROCm and would like to [test rusticl](https://github.com/zelikos/davincibox/issues/72):
 
 - **Make sure davincibox is [up-to-date](https://github.com/zelikos/davincibox?tab=readme-ov-file#upgrading)**
 - Follow the davincibox setup instructions below as normal
@@ -33,6 +33,12 @@ If you experience issues using ROCm and would like to test rusticl:
     - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci rusticl`
 
 If rusticl does work better for you and you would like to launch Resolve with rusticl automatically, you can also adjust the `DaVinciResolve.desktop` file in `$HOME/.local/share/applications`. Add `rusticl` to the end of the `Exec=` line, before `%u`. e.g. `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci rusticl %u`
+
+### Intel
+
+For Intel GPUs, the `intel-compute-runtime` package is included and used by default.
+
+Like with AMD, `rusticl` is available to test as an alternative for Intel users. See the relevant instructions above.
 
 ### NVIDIA
 

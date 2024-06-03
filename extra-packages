@@ -3,6 +3,7 @@ alsa-lib
 apr
 apr-util
 dbus-libs
+intel-compute-runtime
 libglvnd-egl
 libglvnd-glx
 libICE

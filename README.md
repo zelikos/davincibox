@@ -6,23 +6,27 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 ### GPU Support
 
-I've only been able to test this setup with an AMD RX 6600XT GPU. Other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
+My own testing for davincibox has exclusively been with an AMD RX 6600XT GPU. However, other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
 
 ### DaVinci Resolve Studio
 
 Davincibox has had limited testing with DaVinci Resolve Studio. Use at your own risk. See [#26](https://github.com/zelikos/davincibox/issues/26)
 
+### Codecs
+
+DaVinci Resolve on Linux, especially the free version, has limited codec support. Unless you can show that certain codecs are available when using DaVinci Resolve outside of davincibox, but not within davincibox, **do not** report issues about missing codecs here.
+
 ## Requirements
 
 You will need [Podman](https://podman.io/), as well as [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox).
 
-You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve)
+You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve).
 
-If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is currently a requirement.
+If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is a requirement.
 
 ### AMD
 
-Currently, davincibox uses ROCm by default for AMD GPUs. However, [GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus), and some users may have reported [issues](https://github.com/zelikos/davincibox/issues/65) when using it. Davincibox now also includes `mesa-libOpenCL`, and so `rusticl` can be tried as an alternative.
+Currently, davincibox uses ROCm by default for AMD GPUs. However, [GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus), and ROCm frequently [has](https://github.com/ROCm/ROCm/issues/768) [issues](https://github.com/zelikos/davincibox/issues/65) with DaVinci Resolve. Davincibox now also includes `mesa-libOpenCL`, and so `rusticl` can be tried as an alternative.
 
 If you experience issues using ROCm and would like to [test rusticl](https://github.com/zelikos/davincibox/issues/72):
 
@@ -42,7 +46,7 @@ Like with AMD, `rusticl` is available to test as an alternative for Intel users.
 
 ### NVIDIA
 
-NVIDIA users will need to install the `nvidia-container-toolkit`. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
+NVIDIA users will need to install the `nvidia-container-toolkit` on their host OS. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
 
 ## Setup
 

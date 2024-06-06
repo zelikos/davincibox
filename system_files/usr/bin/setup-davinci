@@ -5,10 +5,6 @@ valid=false
 install_success=false
 add_launcher=false
 
-gdk_pixbuf_tmp_dir=/tmp/gdk-pixbuf
-fc38_gdk_pixbuf_package=gdk-pixbuf2-2.42.10-2.fc38.x86_64.rpm
-fc38_gdk_pixbuf_url=https://dl.fedoraproject.org/pub/fedora/linux/releases/38/Everything/x86_64/os/Packages/g/$fc38_gdk_pixbuf_package
-
 if [[ $1 ]]
 then
     installer=$(readlink -e $1)
@@ -30,16 +26,6 @@ then
     sudo QT_QPA_PLATFORM=minimal SKIP_PACKAGE_CHECK=1 $installer -i -a -y
     if [[ $? -eq 0 ]]; then
         install_success=true
-        # Workaround for an issue with Resolve's included libglib-2.0
-        # May not be needed in the future
-        sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
-        # Fix for: gdk_pixbuf undefined symbol: g_task_set_static_name
-        # Thanks to MiMillieuh https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/ju9ygqx
-        mkdir -p $gdk_pixbuf_tmp_dir
-        wget $fc38_gdk_pixbuf_url -P $gdk_pixbuf_tmp_dir
-        rpm2cpio $gdk_pixbuf_tmp_dir/$fc38_gdk_pixbuf_package | cpio -idmv -D $gdk_pixbuf_tmp_dir
-        sudo cp -r $gdk_pixbuf_tmp_dir/usr/lib64/* /opt/resolve/libs/
-        rm -rf $gdk_pixbuf_tmp_dir
     fi
 fi
 

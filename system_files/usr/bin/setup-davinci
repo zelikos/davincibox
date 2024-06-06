@@ -26,9 +26,6 @@ then
     sudo QT_QPA_PLATFORM=minimal SKIP_PACKAGE_CHECK=1 $installer -i -a -y
     if [[ $? -eq 0 ]]; then
         install_success=true
-        # Workaround for an issue with Resolve's included libglib-2.0
-        # May not be needed in the future
-        sudo rm /opt/resolve/libs/libglib-2.0.so /opt/resolve/libs/libglib-2.0.so.0 /opt/resolve/libs/libglib-2.0.so.0.6800.4
     fi
 fi
 

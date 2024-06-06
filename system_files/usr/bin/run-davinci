@@ -1,9 +1,11 @@
 #!/bin/bash
 
 export LD_PRELOAD=/usr/lib64/libglib-2.0.so.0:/usr/lib64/libgdk_pixbuf-2.0.so.0:/usr/lib64/libgio-2.0.so.0:/usr/lib64/libgmodule-2.0.so.0
+export QT_QPA_PLATFORM=xcb
 
 if [[ $1 == "rusticl" ]]; then
-  QT_QPA_PLATFORM=xcb RUSTICL_ENABLE=radeonsi,iris,nouveau OCL_ICD_VENDORS=rusticl.icd /opt/resolve/bin/resolve
-else
-  QT_QPA_PLATFORM=xcb /opt/resolve/bin/resolve
+  export RUSTICL_ENABLE=radeonsi,iris,nouveau
+  export OCL_ICD_VENDORS=rusticl.icd
 fi
+
+/opt/resolve/bin/resolve

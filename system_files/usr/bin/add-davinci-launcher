@@ -70,7 +70,7 @@ then
     if [[ $container_type == "toolbox" ]]; then
         container_run_command="/usr/bin/toolbox run -c davincibox"
     elif [[ $container_type == "distrobox" ]]; then
-        container_run_command="/usr/bin/distrobox-enter -n davincibox --"
+        container_run_command="distrobox-enter -n davincibox --"
     fi
 
     sed -i "s,Exec=/opt/resolve/bin/resolve,Exec=$container_run_command /usr/bin/run-davinci," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop

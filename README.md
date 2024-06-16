@@ -146,6 +146,16 @@ First, run `podman image pull ghcr.io/zelikos/davincibox:latest`
 
 Then, follow the Uninstallation section below and go through manual setup again.
 
+After setup, run `sudo dnf update` in the container to ensure drivers are up to date:
+
+```
+# Distrobox
+distrobox enter davincibox -- sudo dnf update
+
+# Toolbox
+toolbox run -c davincibox sudo dnf update
+```
+
 ## Uninstallation
 
 Run `./setup.sh remove`, or

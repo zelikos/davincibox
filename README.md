@@ -130,6 +130,16 @@ You can still run `add-davinci-launcher` separately, as either `add-davinci-laun
 
 After installation completes, you can remove the `squashfs-root` directory.
 
+After setup, run `sudo dnf update` in the container to ensure drivers are up to date:
+
+```
+# Distrobox
+distrobox enter davincibox -- sudo dnf update
+
+# Toolbox
+toolbox run -c davincibox sudo dnf update
+```
+
 ## Upgrading
 
 Upgrading requires re-creating the davincibox container with the newest version of the image.
@@ -145,16 +155,6 @@ Run `setup.sh upgrade`, then follow the installation steps above.
 First, run `podman image pull ghcr.io/zelikos/davincibox:latest`
 
 Then, follow the Uninstallation section below and go through manual setup again.
-
-After setup, run `sudo dnf update` in the container to ensure drivers are up to date:
-
-```
-# Distrobox
-distrobox enter davincibox -- sudo dnf update
-
-# Toolbox
-toolbox run -c davincibox sudo dnf update
-```
 
 ## Uninstallation
 

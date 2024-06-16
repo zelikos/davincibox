@@ -55,11 +55,13 @@ else
 
     if [[ $container_type == "distrobox" ]]; then
         distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
-        # Start up the container now after creation,
-        # rather than during the later steps
+        # Ensure packages are up-to-date in case of old container build
+        distrobox enter davincibox -- sudo dnf -y update
         distrobox enter davincibox -- echo "davincibox initialized"
     else
         toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
+        # Ensure packages are up-to-date in case of old container build
+        toolbox run --container davincibox sudo dnf -y update
         toolbox run --container davincibox echo "davincibox initialized"
     fi
 

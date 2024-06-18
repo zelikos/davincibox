@@ -5,9 +5,30 @@
 export LD_PRELOAD=/usr/lib64/libglib-2.0.so.0:/usr/lib64/libgdk_pixbuf-2.0.so.0:/usr/lib64/libgio-2.0.so.0:/usr/lib64/libgmodule-2.0.so.0
 export QT_QPA_PLATFORM=xcb
 
-if [[ $1 == "rusticl" ]]; then
+gpu_type=""
+
+get_gpu_type () {
+  if [[ -n $(glxinfo -B | grep -i AMD) ]]; then
+    gpu_type="amd"
+  elif [[ -n $(glxinfo -B | grep -i Intel) ]]; then
+    gpu_type="intel"
+  elif [[ -n $(glxinfo -B | grep -i nvidia) ]]; then
+    gpu_type="nvidia"
+  fi
+}
+
+use_rusticl () {
   export RUSTICL_ENABLE=radeonsi,iris,nouveau
   export OCL_ICD_VENDORS=rusticl.icd
+}
+
+get_gpu_type
+
+# Default to rusticl on AMD GPUs
+# Don't use rusticl if arg rocm is passed
+# Allow use of arg rusticl to opt in for Intel and Nvidia nouveau users
+if [[ $gpu_type == "amd" && $1 != "rocm" || $1 == "rusticl" ]]; then
+  use_rusticl
 fi
 
 /opt/resolve/bin/resolve

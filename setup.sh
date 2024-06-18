@@ -1,6 +1,8 @@
 #!/bin/bash
 
 container_type=""
+container_create_prefix=""
+container_run_prefix=""
 
 remove_davincibox_container () {
     podman container stop davincibox
@@ -21,19 +23,18 @@ if ! command -v distrobox &> /dev/null; then
     else
         container_type="toolbox"
         echo "Toolbox found."
+        container_create_prefix="toolbox create -c davincibox"
+        container_run_prefix="toolbox run --container davincibox"
     fi
 else
     container_type="distrobox"
     echo "Distrobox found."
+    container_create_prefix="distrobox create -n davincibox"
+    container_run_prefix="distrobox enter davincibox --"
 fi
 
-
 if [[ $1 == "remove" ]]; then
-    if [[ $container_type == "distrobox" ]]; then
-        distrobox enter davincibox -- add-davinci-launcher remove
-    elif [[ $container_type == "toolbox" ]]; then
-        toolbox run --container davincibox add-davinci-launcher remove
-    fi
+    $container_run_prefix add-davinci-launcher remove
 
     echo "Removing DaVinci Resolve and davincibox..."
     remove_davincibox_container
@@ -53,17 +54,10 @@ else
     # See https://github.com/zelikos/davincibox/issues/26#issuecomment-1850642631
     podman image pull ghcr.io/zelikos/davincibox:latest
 
-    if [[ $container_type == "distrobox" ]]; then
-        distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
-        # Ensure packages are up-to-date in case of old container build
-        distrobox enter davincibox -- sudo dnf -y update
-        distrobox enter davincibox -- echo "davincibox initialized"
-    else
-        toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
-        # Ensure packages are up-to-date in case of old container build
-        toolbox run --container davincibox sudo dnf -y update
-        toolbox run --container davincibox echo "davincibox initialized"
-    fi
+    $container_create_prefix -i ghcr.io/zelikos/davincibox:latest
+    # Ensure packages are up-to-date in case of old container build
+    $container_run_prefix sudo dnf -y update
+    $container_run_prefix echo "davincibox initialized"
 
     # Check for installer file validity here instead of above,
     # because container can still be set up whether the file is valid or not.
@@ -75,11 +69,7 @@ else
         if [[ $? -eq 0 ]]; then
           # Run setup-davinci
           extracted_installer="squashfs-root/AppRun"
-          if [[ $container_type == "distrobox" ]]; then
-              distrobox enter davincibox -- setup-davinci $extracted_installer $container_type
-          else
-              toolbox run --container davincibox setup-davinci $extracted_installer $container_type
-          fi
+          $container_run_prefix setup-davinci $extracted_installer $container_type
           rm -rf squashfs-root/
         else
             echo "${installer} could not be extracted."

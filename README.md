@@ -92,6 +92,8 @@ First, get davincibox set up.
 
 Distrobox:
 
+**Nvidia users only**, append the `--nvidia` argument to the below command.
+
 ```
 distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
 ```

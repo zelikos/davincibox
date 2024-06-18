@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0](https://github.com/zelikos/davincibox/compare/v1.1.0...v1.2.0) (2024-06-18)
+
+
+### Features
+
+* Add intel-compute-runtime for Intel GPUs ([#73](https://github.com/zelikos/davincibox/issues/73)) ([1a65844](https://github.com/zelikos/davincibox/commit/1a65844031e91d13e974b6691c44d4ca54c2cf90))
+* Add rusticl as opt-in option ([#67](https://github.com/zelikos/davincibox/issues/67)) ([fcc7a76](https://github.com/zelikos/davincibox/commit/fcc7a767362441f9a2c20baf88b5b7377cd19282))
+* **setup.sh:** Improve Nvidia GPU integration, add GPU detection ([8d7d92b](https://github.com/zelikos/davincibox/commit/8d7d92b15a768fe4b7006102c45cd96dea325ed6))
+
+
+### Bug Fixes
+
+* **adl:** Remove `/usr/bin/` prefix from distrobox shortcut ([#81](https://github.com/zelikos/davincibox/issues/81)) ([d7a2367](https://github.com/zelikos/davincibox/commit/d7a236795bc2bff192fa19b92ee54e6bab561a91)), closes [#80](https://github.com/zelikos/davincibox/issues/80)
+* Ensure Fedora packages are updated during setup ([#86](https://github.com/zelikos/davincibox/issues/86)) ([82e47aa](https://github.com/zelikos/davincibox/commit/82e47aaa3b3308b603d711daba0a9fc488359a59)), closes [#85](https://github.com/zelikos/davincibox/issues/85)
+* gdk pixbuf symbol lookup error ([#79](https://github.com/zelikos/davincibox/issues/79)) ([a925dda](https://github.com/zelikos/davincibox/commit/a925ddaeb141f9e54a6824753e062e45e63aa87c)), closes [#78](https://github.com/zelikos/davincibox/issues/78)
+
 ## [1.1.0](https://github.com/zelikos/davincibox/compare/v1.0.3...v1.1.0) (2024-03-09)
 
 

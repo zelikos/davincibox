@@ -3,6 +3,7 @@
 container_type=""
 container_create_prefix=""
 container_run_prefix=""
+nvidia_gpu=false
 valid_installer=false
 
 set_container_type () {
@@ -17,6 +18,18 @@ set_container_type () {
         container_type="distrobox"
         container_create_prefix="distrobox create -n davincibox"
         container_run_prefix="distrobox enter davincibox --"
+    fi
+}
+
+get_gpu_type () {
+    if command -v glxinfo &> /dev/null; then
+        if [[ -n $(glxinfo -B | grep -i nvidia) ]]; then
+            echo "Nvidia GPU detected."
+            nvidia_gpu=true
+        fi
+    else
+        echo "WARNING: glxinfo not found. Could not determine GPU vendor."
+        nvidia_gpu=false
     fi
 }
 
@@ -84,6 +97,10 @@ if ! command -v distrobox &> /dev/null; then
     fi
 else
     set_container_type "distrobox"
+    get_gpu_type
+    if [[ $nvidia_gpu ]]; then
+        container_create_prefix+=" --nvidia"
+    fi
 fi
 
 if [[ $1 == "remove" ]]; then

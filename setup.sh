@@ -120,7 +120,7 @@ else
     create_davincibox_container
     # Check that provided installer path is valid
     check_davinci_installer $1
-    if [[ valid_installer ]]; then
+    if [[ $valid_installer == true ]]; then
         run_davinci_setup $1
     fi
 fi

@@ -3,6 +3,7 @@
 container_type=""
 container_create_prefix=""
 container_run_prefix=""
+installer_path=""
 nvidia_gpu=false
 valid_installer=false
 
@@ -34,7 +35,7 @@ get_gpu_type () {
 }
 
 check_davinci_installer () {
-    installer=$(readlink -e $1)
+    installer=$1
     if [[ ! -f $installer ]]; then
         echo "$1 is not a valid filename."
         echo "Re-run this script with a valid DaVinci Resolve installer."
@@ -116,11 +117,12 @@ elif [[ $1 == "upgrade" ]]; then
     echo "as you would for a fresh installation."
     echo "e.g. ./setup.sh DaVinci_Resolve_18.5.1_Linux.run"
 else
+    installer_path=$(readlink -e $1)
     # Create davincibox container on user's system
     create_davincibox_container
     # Check that provided installer path is valid
-    check_davinci_installer $1
+    check_davinci_installer $installer_path
     if [[ $valid_installer == true ]]; then
-        run_davinci_setup $1
+        run_davinci_setup $installer_path
     fi
 fi

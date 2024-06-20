@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/zelikos/davincibox/compare/v1.2.0...v1.3.0) (2024-06-20)
+
+
+### Features
+
+* **run-davinci:** Default to rusticl for AMD GPUs ([#89](https://github.com/zelikos/davincibox/issues/89)) ([8ab74bc](https://github.com/zelikos/davincibox/commit/8ab74bcfcf348a8e891e795b20c154da07dd4afa))
+
+
+### Bug Fixes
+
+* **setup.sh:** Fix Nvidia GPU check for container creation ([#92](https://github.com/zelikos/davincibox/issues/92)) ([9f5bdaa](https://github.com/zelikos/davincibox/commit/9f5bdaa9424747441c29eb1c44bf0fc1aaafd64b))
+* Use full installer path for installer extraction ([#93](https://github.com/zelikos/davincibox/issues/93)) ([d089ea1](https://github.com/zelikos/davincibox/commit/d089ea16fd674018ec48f06cb9f563ec1e6a1514))
+
 ## [1.2.0](https://github.com/zelikos/davincibox/compare/v1.1.0...v1.2.0) (2024-06-18)
 
 

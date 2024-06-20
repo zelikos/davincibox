@@ -98,7 +98,7 @@ if ! command -v distrobox &> /dev/null; then
 else
     set_container_type "distrobox"
     get_gpu_type
-    if [[ $nvidia_gpu ]]; then
+    if [[ $nvidia_gpu == true ]]; then
         container_create_prefix+=" --nvidia"
     fi
 fi

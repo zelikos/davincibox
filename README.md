@@ -19,6 +19,7 @@ DaVinci Resolve on Linux, especially the free version, has [limited codec suppor
 ### Running from the CLI
 
 If you need to run davincibox from the CLI instead of using a desktop shortcut, you'll need to use the `run-davinci` script in davincibox, as it contains necessary workarounds for DaVinci Resolve to work in the container's Fedora Linux environment.
+
   - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci`
   - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci`
 
@@ -35,6 +36,7 @@ If you're less comfortable in the CLI, I recommend using the `setup.sh` script f
 AMD uses Mesa's `rusticl` for OpenCL support in DaVinci Resolve, due [various](https://github.com/ROCm/ROCm/issues/768) [issues](https://github.com/zelikos/davincibox/issues/65) with AMD's official option, ROCm. These issues largely stem from the fact that [GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus).
 
 ROCm does remain available as a fallback option:
+
   - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci rocm`
   - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci rocm`
 
@@ -45,6 +47,7 @@ If ROCm does work better for you and you would like to launch Resolve with ROCm 
 For Intel GPUs, the `intel-compute-runtime` package is included and used by default.
 
 `rusticl` is available to test as an alternative for Intel users. Similar to running ROCm for AMD as shown above, you can use `run-davinci rusticl` in the container to use `rusticl` instead of the `intel-compute-runtime`:
+
   - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci rusticl`
   - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci rusticl`
 

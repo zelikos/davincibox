@@ -14,7 +14,7 @@ Davincibox has had limited testing with DaVinci Resolve Studio. Use at your own 
 
 ### Codecs
 
-DaVinci Resolve on Linux, especially the free version, has limited codec support. Unless you can show that certain codecs are available when using DaVinci Resolve outside of davincibox, but not within davincibox, **do not** report issues about missing codecs here.
+DaVinci Resolve on Linux, especially the free version, has [limited codec support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_18_Supported_Codec_List.pdf?_v=1705996810000). Unless you can show that certain codecs are available when using DaVinci Resolve outside of davincibox, but not when using davincibox, **do not** report issues about missing codecs here.
 
 ### Running from the CLI
 

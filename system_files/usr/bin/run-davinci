@@ -8,12 +8,12 @@ export QT_QPA_PLATFORM=xcb
 gpu_type=""
 
 get_gpu_type () {
-  if [[ -n $(glxinfo -B | grep -i AMD) ]]; then
+  if [[ -n $(glxinfo -B | grep -i nvidia) ]]; then
+    gpu_type="nvidia"
+  elif [[ -n $(glxinfo -B | grep -i AMD) ]]; then
     gpu_type="amd"
   elif [[ -n $(glxinfo -B | grep -i Intel) ]]; then
     gpu_type="intel"
-  elif [[ -n $(glxinfo -B | grep -i nvidia) ]]; then
-    gpu_type="nvidia"
   fi
 }
 

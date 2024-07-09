@@ -27,6 +27,6 @@ get_gpu_type
 # Default to rusticl on AMD GPUs
 # Don't use rusticl if arg rocm is passed
 # Allow use of arg rusticl to opt in for Intel and Nvidia nouveau users
-if [[ $gpu_type == "amd" && $1 != "rocm" || $1 == "rusticl" ]]; then
+if [[ $gpu_type == "amd" ]]; then
   use_rusticl
 fi

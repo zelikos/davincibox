@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# NOTE: This script is deprecated in favor of davinci.sh located in /etc/profile.d
-
 # Info for this line comes from here: https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/l2cwo27/
 # Slightly modified, as the original wasn't pointed to the correct lib file names
-export LD_PRELOAD=/usr/lib64/libglib-2.0.so.0:/usr/lib64/libgdk_pixbuf-2.0.so.0:/usr/lib64/libgio-2.0.so.0:/usr/lib64/libgmodule-2.0.so.0
+export LD_PRELOAD=/usr/lib64/libglib-2.0.so.0:/usr/lib64/libgdk_pixbuf-2.0.so.0:/usr/lib64/libgio-2.0.so.0:/usr/lib64/libgmodule-2.0.so>
 export QT_QPA_PLATFORM=xcb
 
 gpu_type=""
@@ -32,5 +30,3 @@ get_gpu_type
 if [[ $gpu_type == "amd" && $1 != "rocm" || $1 == "rusticl" ]]; then
   use_rusticl
 fi
-
-/opt/resolve/bin/resolve

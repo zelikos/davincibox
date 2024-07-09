@@ -19,6 +19,7 @@ libxkbcommon-x11
 libXrandr
 libXtst
 libXxf86vm
+lshw
 mesa-libGLU
 mesa-libOpenCL
 mtdev

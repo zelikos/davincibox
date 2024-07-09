@@ -29,7 +29,7 @@ get_gpu_type () {
             nvidia_gpu=true
         fi
     else
-        echo "WARNING: glxinfo not found. Could not determine GPU vendor."
+        echo "WARNING: lshw not found. Could not determine GPU vendor."
         nvidia_gpu=false
     fi
 }

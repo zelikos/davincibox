@@ -16,13 +16,6 @@ Davincibox has had limited testing with DaVinci Resolve Studio. Use at your own 
 
 DaVinci Resolve on Linux, especially the free version, has [limited codec support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_18_Supported_Codec_List.pdf?_v=1705996810000). Unless you can show that certain codecs are available when using DaVinci Resolve outside of davincibox, but not when using davincibox, **do not** report issues about missing codecs here.
 
-### Running from the CLI
-
-If you need to run davincibox from the CLI instead of using a desktop shortcut, you'll need to use the `run-davinci` script in davincibox, as it contains necessary workarounds for DaVinci Resolve to work in the container's Fedora Linux environment.
-
-  - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci`
-  - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci`
-
 ## Requirements & GPU Information
 
 You will need [Podman](https://podman.io/), as well as [`distrobox`](https://github.com/89luca89/distrobox) or [`toolbox`](https://github.com/containers/toolbox).
@@ -30,6 +23,8 @@ You will need [Podman](https://podman.io/), as well as [`distrobox`](https://git
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve).
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is a requirement.
+
+Optional: Ensure `lshw` is installed on your system, as `setup.sh` uses it to detect whether you are using an Nvidia GPU or not.
 
 ### AMD
 

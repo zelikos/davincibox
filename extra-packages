@@ -32,3 +32,4 @@ xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
 xorg-x11-drv-nvidia-cuda
+patchelf

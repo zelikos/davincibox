@@ -33,6 +33,7 @@ if [[ $install_success = true ]]
 then
     # Patch davinci binaries to remove need for LD_PRELOAD workaround mentioned in
     # https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/l2cwo27/
+    echo "Patching resolve binaries..."
     libs=(
         /usr/lib64/libglib-2.0.so.0
         /usr/lib64/libgdk_pixbuf-2.0.so.0

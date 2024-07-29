@@ -31,6 +31,25 @@ fi
 
 if [[ $install_success = true ]]
 then
+    # Patch davinci binaries to remove need for LD_PRELOAD workaround mentioned in
+    # https://www.reddit.com/r/voidlinux/comments/12g71x0/comment/l2cwo27/
+    echo "Patching resolve binaries..."
+    libs=(
+        /usr/lib64/libglib-2.0.so.0
+        /usr/lib64/libgdk_pixbuf-2.0.so.0
+        /usr/lib64/libgio-2.0.so.0
+        /usr/lib64/libgmodule-2.0.so.0
+    )
+    patchelf_args=""
+    for lib in "${libs[@]}"; do
+        patchelf_args="${patchelf_args} --add-needed ${lib} "
+    done
+    unset lib -v
+
+    # shellcheck disable=SC2086
+    find /opt/resolve/bin -executable -type f -exec sudo patchelf $patchelf_args {} \;
+    unset libs -v
+
     # TODO: Better phrasing
     echo "Add DaVinci Resolve launcher? Y/n"
     read response

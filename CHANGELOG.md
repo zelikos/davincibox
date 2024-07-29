@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/zelikos/davincibox/compare/v1.3.0...v1.4.0) (2024-07-29)
+
+
+### Features
+
+* Apply workarounds for other programs included with Resolve ([#104](https://github.com/zelikos/davincibox/issues/104)) ([945ffe8](https://github.com/zelikos/davincibox/commit/945ffe8f1500237598db4f8e2ddcc52e17d2e191)), closes [#100](https://github.com/zelikos/davincibox/issues/100)
+
+
+### Bug Fixes
+
+* **adl:** Manually source davinci.sh for distrobox ([#107](https://github.com/zelikos/davincibox/issues/107)) ([cd0f7f7](https://github.com/zelikos/davincibox/commit/cd0f7f7781375bf90cfa903594e8bbcaf002c0fb)), closes [#106](https://github.com/zelikos/davincibox/issues/106)
+* **run-davinci:** Check for Nvidia GPU first ([#101](https://github.com/zelikos/davincibox/issues/101)) ([921b578](https://github.com/zelikos/davincibox/commit/921b578b407629e7e78ba088f184e723c43c3fe1))
+* **setup.sh:** More reliable nvidia detection ([c39a68d](https://github.com/zelikos/davincibox/commit/c39a68d645883ff4cbb500f2ec81a302b367d68f))
+
 ## [1.3.0](https://github.com/zelikos/davincibox/compare/v1.2.0...v1.3.0) (2024-06-20)
 
 

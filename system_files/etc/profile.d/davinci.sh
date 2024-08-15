@@ -5,12 +5,17 @@ export QT_QPA_PLATFORM=xcb
 gpu_type=""
 
 get_gpu_type () {
-  if lshw -c video 2>/dev/null | grep -qi nvidia; then
+  # Checks only for nvidia driver and not nouveau
+  if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
     gpu_type="nvidia"
-  elif lshw -c video 2>/dev/null | grep -qi amd; then
+  # Checks for amdgpu so that we can specify using rusticl by default
+  elif lshw -c video 2>/dev/null | grep -qi "driver=amdgpu"; then
     gpu_type="amd"
-  elif lshw -c video 2>/dev/null | grep -qi intel; then
-    gpu_type="intel"
+  # We don't have any special handling necessary for Intel GPUs at this time,
+  # so we aren't currently checking for them.
+  # In case we need to in the future, the Intel drivers are:
+  # - driver=i915
+  # - driver=xe
   fi
 }
 

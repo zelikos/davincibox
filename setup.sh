@@ -24,7 +24,7 @@ set_container_type () {
 
 get_gpu_type () {
     if command -v lshw &> /dev/null; then
-        if lshw -c video 2>/dev/null | grep -qi nvidia; then
+        if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
             echo "Nvidia GPU detected."
             nvidia_gpu=true
         fi

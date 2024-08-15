@@ -5,10 +5,11 @@ export QT_QPA_PLATFORM=xcb
 gpu_type=""
 
 get_gpu_type () {
-  if lshw -c video 2>/dev/null | grep -qi nvidia; then
+  if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
     gpu_type="nvidia"
-  elif lshw -c video 2>/dev/null | grep -qi amd; then
+  elif lshw -c video 2>/dev/null | grep -qi "driver=amdgpu"; then
     gpu_type="amd"
+  # TODO: Check for Intel driver name(s) instead
   elif lshw -c video 2>/dev/null | grep -qi intel; then
     gpu_type="intel"
   fi

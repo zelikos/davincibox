@@ -12,8 +12,9 @@ get_gpu_type () {
   # are *very* unlikely to handle running DaVinci Resolve anyway
   elif lshw -c video 2>/dev/null | grep -qi "driver=amdgpu"; then
     gpu_type="amd"
-  # TODO: Check for Intel driver name(s) instead
-  elif lshw -c video 2>/dev/null | grep -qi intel; then
+  elif lshw -c video 2>/dev/null | grep -qi "driver=i915"; then
+    gpu_type="intel"
+  elif lshw -c video 2>/dev/null | grep -qi "driver=xe"; then
     gpu_type="intel"
   fi
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/zelikos/davincibox/compare/v1.4.0...v1.4.1) (2024-09-02)
+
+
+### Bug Fixes
+
+* Check for GPU driver name, not just vendor ([#115](https://github.com/zelikos/davincibox/issues/115)) ([3e51fa3](https://github.com/zelikos/davincibox/commit/3e51fa38ac7512a26d644d0f48d8cf99921d80de)), closes [#113](https://github.com/zelikos/davincibox/issues/113)
+
 ## [1.4.0](https://github.com/zelikos/davincibox/compare/v1.3.0...v1.4.0) (2024-07-29)
 
 

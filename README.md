@@ -148,7 +148,7 @@ toolbox run -c davincibox sudo dnf update
 
 Usually, you'll only need to update the packages in the container (i.e. driver updates), not the container image itself. In this case, simply run `sudo dnf update` in davincibox as shown above.
 
-Otherwise, a full upgrade requires re-creating the davincibox container with the newest version of the image. This should only needed if there have been changes to the `setup-davinci` or `add-davinci-launcher` scripts used by davincibox. **When reporting issues, a full upgrade should be performed first**.
+Otherwise, a full upgrade requires re-creating the davincibox container with the newest version of the image. This should only needed if there has been a new GitHub release for davincibox, as this may include changes to the `setup-davinci` or `add-davinci-launcher` scripts. **When reporting issues, a full upgrade should be performed first**.
 
 If a new version of davincibox is available and you need to upgrade, you can do so manually or with `setup.sh`.
 

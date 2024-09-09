@@ -35,7 +35,12 @@ ROCm does remain available as a fallback option:
   - Distrobox: `distrobox enter -n davincibox -- /usr/bin/run-davinci rocm`
   - Toolbox: `toolbox run -c davincibox /usr/bin/run-davinci rocm`
 
-If ROCm does work better for you and you would like to launch Resolve with ROCm automatically, you can also adjust the `DaVinciResolve.desktop` file in `$HOME/.local/share/applications`. Add `rocm` to the end of the `Exec=` line, before `%u`. e.g. `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci rocm %u`
+If ROCm does work better for you and you would like to launch Resolve with ROCm via the desktop shortcut, you can also adjust the `DaVinciResolve.desktop` file in `$HOME/.local/share/applications`.
+
+Change the `Exec=` line as follows:
+
+  - Distrobox: `Exec=distrobox-enter -n davincibox -- /usr/bin/run-davinci rocm %u`
+  - Toolbox: `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci rocm %u`
 
 ### Intel
 

@@ -13,9 +13,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: build
+  build_base:
+    name: Build davincibox
     uses: ./.github/workflows/reusable-build.yml
     secrets: inherit
     with:
       davincibox_flavor: davincibox
+  build_opencl:
+    name: Build davincibox-opencl
+    uses: ./.github/workflows/reusable-build.yml
+    secrets: inherit
+    with:
+      davincibox_flavor: davincibox-opencl

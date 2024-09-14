@@ -30,6 +30,7 @@ get_gpu_type () {
             nvidia_gpu=true
             davincibox_flavor="davincibox"
         else
+          echo "No NVIDIA GPU detected. Using OpenCL"
           nvidia_gpu=false
           davincibox_flavor="davincibox-opencl"
         fi

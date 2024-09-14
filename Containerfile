@@ -15,3 +15,7 @@ COPY davinci-dependencies /
 RUN dnf -y update && \
     grep -v '^#' /davinci-dependencies | xargs dnf -y install
 RUN rm /davinci-dependencies
+
+FROM davincibox AS davincibox-opencl
+
+RUN dnf -y install intel-compute-runtime mesa-libOpenCL rocm-opencl

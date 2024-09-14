@@ -11,7 +11,7 @@ LABEL com.github.containers.toolbox="true" \
 
 COPY system_files /
 
-COPY extra-packages /
+COPY davinci-dependencies /
 RUN dnf -y update && \
-    grep -v '^#' /extra-packages | xargs dnf -y install
-RUN rm /extra-packages
+    grep -v '^#' /davinci-dependencies | xargs dnf -y install
+RUN rm /davinci-dependencies

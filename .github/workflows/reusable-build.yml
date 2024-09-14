@@ -15,10 +15,10 @@ jobs:
   push-ghcr:
     name: Build and push image
     runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
+    # permissions:
+    #   contents: read
+    #   packages: write
+    #   id-token: write
     strategy:
       fail-fast: false
     steps:

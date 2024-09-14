@@ -95,14 +95,16 @@ Then, follow any further prompts in the installation script.
 
 ### Manual
 
-First, get davincibox set up.
+#### Setup Davincibox
+
+First, get davincibox set up. There are two different builds of davincibox, depending on whether you use an NVIDIA GPU or not:
+
+**NVIDIA Users**
 
 Distrobox:
 
-**Nvidia users only**, append the `--nvidia` argument to the below command.
-
 ```
-distrobox create -i ghcr.io/zelikos/davincibox:latest -n davincibox
+distrobox create -i ghcr.io/zelikos/davincibox:latest --nvidia -n davincibox
 ```
 
 Toolbox:
@@ -110,6 +112,22 @@ Toolbox:
 ```
 toolbox create -i ghcr.io/zelikos/davincibox:latest -c davincibox
 ```
+
+**Intel & AMD Users**
+
+Distrobox:
+
+```
+distrobox create -i ghcr.io/zelikos/davincibox-opencl:latest -n davincibox
+```
+
+Toolbox:
+
+```
+toolbox create -i ghcr.io/zelikos/davincibox-opencl:latest -c davincibox
+```
+
+#### Install DaVinci Resolve
 
 On the host, run `--appimage-extract` on your DaVinci Resolve installer
 
@@ -141,11 +159,16 @@ After installation completes, you can remove the `squashfs-root` directory.
 
 After setup, run `sudo dnf update` in the container to ensure drivers are up to date:
 
-```
-# Distrobox
-distrobox enter davincibox -- sudo dnf update
 
-# Toolbox
+Distrobox:
+
+```
+distrobox enter davincibox -- sudo dnf update
+```
+
+Toolbox:
+
+```
 toolbox run -c davincibox sudo dnf update
 ```
 

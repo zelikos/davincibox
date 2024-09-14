@@ -3,7 +3,6 @@ apr
 apr-util
 dbus-libs
 glx-utils
-intel-compute-runtime
 libglvnd-egl
 libglvnd-glx
 libICE
@@ -20,11 +19,9 @@ libXtst
 libXxf86vm
 lshw
 mesa-libGLU
-mesa-libOpenCL
 mtdev
 pipewire-alsa
 pulseaudio-libs
-rocm-opencl
 xcb-util
 xcb-util-cursor
 xcb-util-image

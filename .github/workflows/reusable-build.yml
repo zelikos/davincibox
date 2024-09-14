@@ -33,11 +33,15 @@ jobs:
           TIMESTAMP="$(date +%Y%m%d)"
 
           COMMIT_TAGS=()
+          BUILD_TAGS()
 
           # Have tags for tracking builds during pull request
           SHA_SHORT="${GITHUB_SHA::7}"
           COMMIT_TAGS+=("pr-${{ github.event.number }}")
           COMMIT_TAGS+=("${SHA_SHORT}")
+
+          BUILD_TAGS=("${TIMESTAMP}")
+          BUILD_TAGS+=("latest")
 
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
               echo "Generated the following commit tags: "
@@ -47,8 +51,12 @@ jobs:
               alias_tags=("${COMMIT_TAGS[@]}")
               echo "DEFAULT_TAG=${SHA_SHORT}" >> $GITHUB_ENV
           else
-              alias_tags=("latest")
+              alias_tags=("${BUILD_TAGS[@]}")
           fi
+          echo "Generated the following build tags: "
+          for TAG in "${BUILD_TAGS[@]}"; do
+              echo "${TAG}"
+          done
           echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
 
       # Build metadata

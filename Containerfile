@@ -18,4 +18,4 @@ RUN rm /davinci-dependencies
 
 FROM davincibox AS davincibox-opencl
 
-RUN dnf -y install intel-compute-runtime mesa-libOpenCL rocm-opencl
+RUN dnf -y install intel-compute-runtime rocm-opencl

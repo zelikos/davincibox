@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/zelikos/davincibox/compare/v1.4.1...v2.0.0) (2024-09-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Split into `davincibox` and `davincibox-opencl` ([#121](https://github.com/zelikos/davincibox/issues/121))
+
+### Bug Fixes
+
+* Add xcb-util-cursor ([#123](https://github.com/zelikos/davincibox/issues/123)) ([d19681d](https://github.com/zelikos/davincibox/commit/d19681da4ace14e504e05aa4fea3990e048cd6e0))
+
+
+### Code Refactoring
+
+* Split into `davincibox` and `davincibox-opencl` ([#121](https://github.com/zelikos/davincibox/issues/121)) ([8bd8117](https://github.com/zelikos/davincibox/commit/8bd8117a2baa720fc8d0586b4e1cae956cb7357a))
+
 ## [1.4.1](https://github.com/zelikos/davincibox/compare/v1.4.0...v1.4.1) (2024-09-02)
 
 

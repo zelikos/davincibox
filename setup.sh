@@ -3,6 +3,7 @@
 container_type=""
 container_create_prefix=""
 container_run_prefix=""
+davincibox_flavor=""
 installer_path=""
 nvidia_gpu=false
 valid_installer=false
@@ -27,10 +28,16 @@ get_gpu_type () {
         if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
             echo "Nvidia GPU detected."
             nvidia_gpu=true
+            davincibox_flavor="davincibox"
+        else
+          echo "No NVIDIA GPU detected. Using OpenCL"
+          nvidia_gpu=false
+          davincibox_flavor="davincibox-opencl"
         fi
     else
         echo "WARNING: lshw not found. Could not determine GPU vendor."
         nvidia_gpu=false
+        davincibox_flavor="davincibox-opencl"
     fi
 }
 
@@ -64,14 +71,14 @@ run_davinci_setup () {
 }
 
 create_davincibox_container () {
-    echo "Setting up davincibox..."
+    echo "Setting up $davincibox_flavor..."
 
     # Do this separately here to ensure the latest image is present
     # before the container is created.
     # See https://github.com/zelikos/davincibox/issues/26#issuecomment-1850642631
-    podman image pull ghcr.io/zelikos/davincibox:latest
+    podman image pull "ghcr.io/zelikos/$davincibox_flavor:latest"
 
-    $container_create_prefix -i ghcr.io/zelikos/davincibox:latest
+    $container_create_prefix -i "ghcr.io/zelikos/$davincibox_flavor:latest"
     # Ensure packages are up-to-date in case of old container build
     $container_run_prefix sudo dnf -y update
     $container_run_prefix echo "davincibox initialized"

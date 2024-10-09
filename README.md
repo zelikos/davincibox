@@ -24,7 +24,7 @@ You will also need the latest release of DaVinci Resolve from [Blackmagic's webs
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is a requirement.
 
-Optional: Ensure `lshw` is installed on your system, as `setup.sh` uses it to detect whether you are using an Nvidia GPU or not.
+**Important**: Ensure `lshw` is installed on your system, as `setup.sh` uses it to detect whether you are using an Nvidia GPU or not. This is pre-installed on Universal Blue images, but you may need to install it yourself on other Linux distributions.
 
 ### AMD
 

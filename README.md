@@ -221,10 +221,10 @@ This however requires that the host system provides a pipewire server. If your h
 
 You can either convert your host system to provide `pipewire` or change your `davincibox` instance to use any sound server you have running.
 
-For example, if your host-system uses `pulse-audio`, you can change `davincibox` as follows:
+For example, if your host-system uses `pulseaudio`, you can change `davincibox` as follows:
 
 ```
-> distrobox-enter -n davincibox -- bash
+> distrobox-enter -n davincibox
 > sudo dnf remove pipewire-alsa
 > sudo dnf install alsa-plugins-pulseaudio
 ```

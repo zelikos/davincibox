@@ -214,6 +214,21 @@ podman container stop davincibox
 toolbox rm davincibox
 ```
 
+## Troubleshooting
+### No Audio output
+DaVinci Resolve uses ALSA. In `davincibox` this is supported via the `pipewire-alsa` plugin, which re-directs sound to pipewire.
+This however requires that the host system provides a pipewire server. If your host-system uses some other sound server, this might not work.
+
+You can either convert your host system to provide `pipewire` or change your `davincibox` instance to use any sound server you have running.
+
+For example, if your host-system uses `pulseaudio`, you can change `davincibox` as follows:
+
+```
+> distrobox-enter -n davincibox
+> sudo dnf remove pipewire-alsa
+> sudo dnf install alsa-plugins-pulseaudio
+```
+
 ## Credits
 
 Sean Davis, AKA [bluesabre](https://github.com/bluesabre)

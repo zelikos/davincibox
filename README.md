@@ -232,8 +232,8 @@ For example, if your host-system uses `pulseaudio`, you can change `davincibox` 
 ## Credits
 
 Sean Davis, AKA [bluesabre](https://github.com/bluesabre)
-- For putting together [this Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296); davincibox's Containerfile and setup scripts are heavily based on that information
+- For putting together [this Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296); davincibox's Containerfile and setup scripts were heavily based on that information
 
 [Jorge Castro](https://github.com/castrojo) and [Universal Blue](https://github.com/ublue-os)
 - Jorge's blog post about [declaring distroboxes](https://www.ypsidanger.com/declaring-your-own-personal-distroboxes/) planted the seed for davincibox to become a thing
-- Pretty much everything on the GitHub CI part of this is based on [uBlue's Boxkit](https://github.com/ublue-os/boxkit)
+- Pretty much everything on the GitHub CI part of this was originally based on [uBlue's Boxkit](https://github.com/ublue-os/boxkit)

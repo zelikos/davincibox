@@ -13,6 +13,8 @@ Before reporting a bug, make sure that you can reproduce it on the latest versio
 
 See the [upgrading](https://github.com/zelikos/davincibox#upgrading) section of the README for more information.
 
+Also, be sure to **read the [Disclaimers section of the README](https://github.com/zelikos/davincibox?tab=readme-ov-file#disclaimers) first**. Your issue may already be known and/or is an upstream issue with DaVinci Resolve directly, not with this project.
+
 **Describe the bug**
 
 A clear and concise description of what the bug is.

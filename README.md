@@ -8,6 +8,8 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 My own testing for davincibox has exclusively been with an AMD RX 6600XT GPU. However, other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
 
+On AMD GPUs, Fusion and Fusion FX have poor performance, and may crash DaVinci Resolve and/or your GPU altogether. Non-Fusion effects generally work fine.
+
 ### DaVinci Resolve Studio
 
 Davincibox has had limited testing with DaVinci Resolve Studio. Use at your own risk. See [#26](https://github.com/zelikos/davincibox/issues/26)

@@ -47,7 +47,7 @@ If applicable, add screenshots to help explain your problem.
  - Distro: [e.g. Ubuntu 23.10]
  - Desktop Environment: [e.g. GNOME, KDE Plasma]
  - GPU: [e.g. AMD Radeon RX 6600 XT]
- - Davincibox version: [output of `podman image list | grep davincibox`, **not** the GitHub release number]
+ - Davincibox version: [the **full** output of `podman image list | grep davincibox`, **not** the GitHub release number]
 
 **Additional context**
 Add any other context about the problem here.

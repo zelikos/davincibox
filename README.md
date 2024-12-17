@@ -57,6 +57,8 @@ For Intel GPUs, the `intel-compute-runtime` package is included and used by defa
 
 NVIDIA users will need to install the `nvidia-container-toolkit` on their host OS. If you are using a [Universal Blue](https://universal-blue.org/) image such as [Bluefin](https://projectbluefin.io/), this will already be installed. Otherwise, see [NVIDIA's installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for instructions for your distribution.
 
+You may additionally need to add a SELinux policy to allow containers to use your GPU. See the "Adding the SELinux policy module" in this [guide](https://www.redhat.com/en/blog/how-use-gpus-containers-bare-metal-rhel-8). Otherwise, you may get an "Unsupported GPU processing mode" error when launching Resolve.
+
 ## Setup
 
 ### CLI:

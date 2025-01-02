@@ -61,7 +61,7 @@ run_davinci_setup () {
     if [[ $? -eq 0 ]]; then
       # Run setup-davinci
       extracted_installer="squashfs-root/AppRun"
-      $container_run_prefix setup-davinci $extracted_installer $container_type
+      $container_run_prefix /usr/bin/setup-davinci $extracted_installer $container_type
       rm -rf squashfs-root/
     else
         echo "${installer} could not be extracted."
@@ -112,7 +112,7 @@ else
 fi
 
 if [[ $1 == "remove" ]]; then
-    $container_run_prefix add-davinci-launcher remove
+    $container_run_prefix /usr/bin/add-davinci-launcher remove
 
     echo "Removing DaVinci Resolve and davincibox..."
     remove_davincibox_container

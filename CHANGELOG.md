@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/zelikos/davincibox/compare/v2.0.0...v2.0.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* **setup.sh:** Use absolute paths for internal scripts ([a8cd464](https://github.com/zelikos/davincibox/commit/a8cd4646219ff425ba43874347fc7d9d5306fe26))
+* **setup.sh:** Use absolute paths for internal scripts ([#141](https://github.com/zelikos/davincibox/issues/141)) ([3bf8a08](https://github.com/zelikos/davincibox/commit/3bf8a081f046626961ff1f708c0ec97c0f86d26f))
+
 ## [2.0.0](https://github.com/zelikos/davincibox/compare/v1.4.1...v2.0.0) (2024-09-16)
 
 

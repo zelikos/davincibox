@@ -50,6 +50,19 @@ then
     find /opt/resolve/bin -executable -type f -exec sudo patchelf $patchelf_args {} \;
     unset libs -v
 
+    echo "Applying workaround for companion programs..."
+
+    decoders=(
+      /opt/resolve/BlackmagicRAWPlayer/BlackmagicRawAPI/libDecoderOpenCL.so
+      /opt/resolve/BlackmagicRAWSpeedTest/BlackmagicRawAPI/libDecoderOpenCL.so
+    )
+
+    for decoder in "${decoders[@]}"; do
+      sudo mv $decoder "${decoder}.bak"
+    done
+    unset decoder -v
+    unset decoders -v
+
     # TODO: Better phrasing
     echo "Add DaVinci Resolve launcher? Y/n"
     read response

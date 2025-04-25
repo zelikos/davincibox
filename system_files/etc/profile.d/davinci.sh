@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export QT_QPA_PLATFORM=xcb
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 gpu_type=""
 

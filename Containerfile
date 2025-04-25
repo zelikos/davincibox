@@ -18,5 +18,11 @@ RUN rm /davinci-dependencies
 
 FROM davincibox AS davincibox-opencl
 
+# rocm-opencl specifically depends on ocl-icd, which conflicts with OpenCL-ICD-Loader,
+# which was pulled in by mesa-libOpenCL in the davinci-dependencies above
 RUN dnf -y remove OpenCL-ICD-Loader
 RUN dnf -y install intel-compute-runtime rocm-opencl
+# Re-add mesa-libOpenCL here because removing OpenCL-ICD-Loader removes it,
+# but re-installing mesa-libOpenCL doesn't pull OpenCL-ICD-Loader back in,
+# so rusticl and ROCm can still co-exist
+RUN dnf -y install mesa-libOpenCL

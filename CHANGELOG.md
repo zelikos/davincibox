@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.3](https://github.com/zelikos/davincibox/compare/v2.0.2...v2.0.3) (2025-04-25)
+
+
+### Bug Fixes
+
+* Re-add mesa-libOpenCL in davincibox-opencl ([9bc2886](https://github.com/zelikos/davincibox/commit/9bc288635b4e416013a78d8104dee34956c22570))
+* Support fractional scaling settings ([39348eb](https://github.com/zelikos/davincibox/commit/39348eb5e5774922023fdcb630203a1628153bdc))
+
 ## [2.0.2](https://github.com/zelikos/davincibox/compare/v2.0.1...v2.0.2) (2025-04-25)
 
 

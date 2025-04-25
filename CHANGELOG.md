@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2](https://github.com/zelikos/davincibox/compare/v2.0.1...v2.0.2) (2025-04-25)
+
+
+### Bug Fixes
+
+* **nvidia:** Rename libDecoderOpenCL.so for companion programs ([d815701](https://github.com/zelikos/davincibox/commit/d8157013fd58ed01121d947d76effe196f297337))
+* **opencl:** Remove OpenCL-ICD-Loader before installing OpenCL packages ([dd87812](https://github.com/zelikos/davincibox/commit/dd87812e5568924baf075c07002a2218073f33a8))
+
 ## [2.0.1](https://github.com/zelikos/davincibox/compare/v2.0.0...v2.0.1) (2025-01-02)
 
 

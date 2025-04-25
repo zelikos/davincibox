@@ -18,4 +18,5 @@ RUN rm /davinci-dependencies
 
 FROM davincibox AS davincibox-opencl
 
+RUN dnf -y remove OpenCL-ICD-Loader
 RUN dnf -y install intel-compute-runtime rocm-opencl

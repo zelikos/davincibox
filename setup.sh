@@ -110,7 +110,7 @@ else
     set_container_type "distrobox"
     get_gpu_type
     if [[ $nvidia_gpu == true ]]; then
-        container_create_prefix+=" --nvidia"
+        container_create_prefix+=' --additional-flags "--gpus all"'
     fi
 fi
 

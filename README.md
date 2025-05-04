@@ -8,9 +8,11 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 My own testing for davincibox has been with an AMD RX 6600XT GPU, and more recently on an Intel Core Ultra 5 125H (i.e. Intel Arc integrated graphics). However, other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
 
-On AMD GPUs, Fusion and Fusion FX have poor performance, and may crash DaVinci Resolve and/or your GPU altogether. Non-Fusion effects generally work fine.
+On AMD with ROCm (AMD's official compute package), DaVinci Resolve does not work at all, and has not for quite some time. Davincibox defaults to `rusticl` for AMD GPUs instead now, but this still has its own caveats: Fusion and Fusion FX have poor performance, and may crash DaVinci Resolve and/or your GPU altogether. Non-Fusion effects generally work fine.
 
-On Intel via intel-compute-runtime, things seem to work much better.
+On Intel via `intel-compute-runtime`, DaVinci Resolve has been much more stable and with better performance in Fusion. Intel can also be used with `rusticl`, but this generally shouldn't be needed since `intel-compute-runtime` works just fine.
+
+I do not have an NVIDIA GPU at this time and **cannot** directly troubleshoot issues with using them. Support and troubleshooting for NVIDIA-related issues is very reliant on members of the community.
 
 ### DaVinci Resolve Studio
 

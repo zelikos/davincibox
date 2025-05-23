@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-toolbox:41 AS davincibox
+FROM quay.io/fedora/fedora-toolbox:42 AS davincibox
 
 # Support Nvidia Container Runtime (https://developer.nvidia.com/nvidia-container-runtime)
 ENV NVIDIA_VISIBLE_DEVICES all

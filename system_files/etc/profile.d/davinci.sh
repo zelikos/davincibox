@@ -28,6 +28,6 @@ use_rusticl () {
 get_gpu_type
 
 # Default to rusticl on AMD GPUs
-if [[ $gpu_type == "amd" ]]; then
-  use_rusticl
-fi
+# if [[ $gpu_type == "amd" ]]; then
+#   use_rusticl
+# fi

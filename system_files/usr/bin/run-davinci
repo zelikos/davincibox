@@ -2,15 +2,13 @@
 
 source /etc/profile.d/davinci.sh
 
-disable_rusticl () {
-  export RUSTICL_ENABLE=""
-  export OCL_ICD_VENDORS=""
+use_rusticl () {
+  export RUSTICL_ENABLE=radeonsi,iris,nouveau
+  export OCL_ICD_VENDORS=rusticl.icd
 }
 
 if [[ $1 == "rusticl" ]]; then
   use_rusticl
-elif [[ $1 == "rocm" ]]; then
-  disable_rusticl
 fi
 
 /opt/resolve/bin/resolve

@@ -18,9 +18,7 @@ RUN rm /davinci-dependencies
 
 FROM davincibox AS davincibox-opencl
 
-# Ensure ocl-icd is installed, as OpenCL-ICD-Loader tends to be pulled in
-# as a dependency but does not work. See:
-# https://github.com/zelikos/davincibox/issues/158
-# https://github.com/zelikos/davincibox/issues/169
-RUN dnf -y install --allowerasing ocl-icd
+# Remove mesa-libOpenCL since it breaks rocm-opencl
+# https://github.com/zelikos/davincibox/issues/173
+RUN dnf -y remove mesa-libOpenCL
 RUN dnf -y install intel-compute-runtime rocm-opencl

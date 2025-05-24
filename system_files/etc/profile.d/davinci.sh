@@ -20,14 +20,4 @@ get_gpu_type () {
   fi
 }
 
-use_rusticl () {
-  export RUSTICL_ENABLE=radeonsi,iris,nouveau
-  export OCL_ICD_VENDORS=rusticl.icd
-}
-
 get_gpu_type
-
-# Default to rusticl on AMD GPUs
-if [[ $gpu_type == "amd" ]]; then
-  use_rusticl
-fi

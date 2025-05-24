@@ -35,9 +35,11 @@ get_gpu_type () {
           davincibox_flavor="davincibox-opencl"
         fi
     else
-        echo "WARNING: lshw not found. Could not determine GPU vendor."
-        nvidia_gpu=false
-        davincibox_flavor="davincibox-opencl"
+        echo "ERROR: lshw not found. Could not determine GPU vendor."
+        echo "Install the lshw package to use setup.sh,"
+        echo "or follow the manual setup instructions instead:"
+        echo "https://github.com/zelikos/davincibox#manual"
+        exit 1
     fi
 }
 

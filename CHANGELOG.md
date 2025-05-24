@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/zelikos/davincibox/compare/v2.0.3...v2.0.4) (2025-05-23)
+
+
+### Bug Fixes
+
+* **opencl:** Explicitly install `ocl-icd` ([06d658d](https://github.com/zelikos/davincibox/commit/06d658d2f1d1114d0d1c7defaed03710399045b2))
+
 ## [2.0.3](https://github.com/zelikos/davincibox/compare/v2.0.2...v2.0.3) (2025-04-25)
 
 

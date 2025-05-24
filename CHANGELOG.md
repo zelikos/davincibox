@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/zelikos/davincibox/compare/v2.0.4...v3.0.0) (2025-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* Revert to ROCm by default on AMD GPUs
+
+### Features
+
+* Revert to ROCm by default on AMD GPUs ([350e5d5](https://github.com/zelikos/davincibox/commit/350e5d5f0b94d1cc65a785b873a545b5bcafed35))
+* **run-davinci:** Make rusticl opt-in ([0928a86](https://github.com/zelikos/davincibox/commit/0928a86f045fb6219eb3813fbe4aeff09d89ae76))
+* **setup.sh:** Exit if lshw isn't found and direct to README ([85945b1](https://github.com/zelikos/davincibox/commit/85945b1662e4eabd6b7e76948e451eb39a2e488b))
+
 ## [2.0.4](https://github.com/zelikos/davincibox/compare/v2.0.3...v2.0.4) (2025-05-23)
 
 

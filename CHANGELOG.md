@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/zelikos/davincibox/compare/v3.0.0...v3.0.1) (2025-05-31)
+
+
+### Bug Fixes
+
+* **setup.sh:** Check GPU type when using Toolbx ([faf62d1](https://github.com/zelikos/davincibox/commit/faf62d1236e764548f934f7c13057ea407bfa56f))
+
 ## [3.0.0](https://github.com/zelikos/davincibox/compare/v2.0.4...v3.0.0) (2025-05-24)
 
 

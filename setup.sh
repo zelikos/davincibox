@@ -104,6 +104,7 @@ if ! command -v distrobox &> /dev/null; then
         exit
     else
         set_container_type "toolbox"
+        get_gpu_type
     fi
 else
     set_container_type "distrobox"

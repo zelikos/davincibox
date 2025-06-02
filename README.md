@@ -242,6 +242,21 @@ For example, if your host-system uses `pulseaudio`, you can change `davincibox` 
 > sudo dnf install alsa-plugins-pulseaudio
 ```
 
+### Resolve Studio crashes on "Checking Licences..."
+If you're a user of DaVinci Resolve Studio and have a USB Licence key, some Linux distributions may require you to add a udev rule to enable access to communicate with the USB key from within the container.
+
+An example udev rule is as follows:
+```
+# Place this file in /etc/udev/rules.d/
+# Recommended file name: 90-davinci-usb.rules
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="096e", TAG+="uaccess"
+
+# Allow access to toolbox / distrobox
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users"
+```
+
 ## Credits
 
 Sean Davis, AKA [bluesabre](https://github.com/bluesabre)

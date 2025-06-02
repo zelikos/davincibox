@@ -1,14 +1,57 @@
 #!/bin/bash
 
-source /etc/profile.d/davinci.sh
+export QT_QPA_PLATFORM=xcb
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
-use_rusticl () {
+GPU_TYPE=""
+USE_RUSTICL=false
+DAVINCI_BIN=""
+
+get_gpu_type () {
+  # Checks only for nvidia driver and not nouveau
+  if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
+    GPU_TYPE="nvidia"
+  # Checks for amdgpu so that we can specify using rusticl by default
+  elif lshw -c video 2>/dev/null | grep -qi "driver=amdgpu"; then
+    GPU_TYPE="amd"
+  # We don't have any special handling necessary for Intel GPUs at this time,
+  # so we aren't currently checking for them.
+  # In case we need to in the future, the Intel drivers are:
+  # - driver=i915
+  # - driver=xe
+  fi
+}
+
+get_gpu_type
+
+enable_rusticl () {
   export RUSTICL_ENABLE=radeonsi,iris,nouveau
   export OCL_ICD_VENDORS=rusticl.icd
 }
 
-if [[ $1 == "rusticl" ]]; then
-  use_rusticl
+while getopts "c" flag; do
+  case "${flag}" in
+    c) USE_RUSTICL=true;;
+  esac
+done
+
+if [[ $USE_RUSTICL == true ]]; then
+  enable_rusticl
 fi
 
-/opt/resolve/bin/resolve
+shift $((OPTIND - 1))
+
+if [[ $1 ]]; then
+  DAVINCI_BIN=$(readlink -e $1)
+  if [[ -f $DAVINCI_BIN ]]; then
+    echo "Launching $DAVINCI_BIN"
+  else
+    echo "$1 could not be found."
+    exit 1
+  fi
+else
+  echo "No path specified. Launching /opt/resolve/bin/resolve"
+  DAVINCI_BIN="/opt/resolve/bin/resolve"
+fi
+
+$DAVINCI_BIN

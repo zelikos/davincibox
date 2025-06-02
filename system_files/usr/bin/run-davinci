@@ -54,4 +54,4 @@ else
   DAVINCI_BIN="/opt/resolve/bin/resolve"
 fi
 
-$DAVINCI_BIN
+switcherooctl launch $DAVINCI_BIN

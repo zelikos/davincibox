@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.1.0](https://github.com/zelikos/davincibox/compare/v3.0.0...v3.1.0) (2025-06-03)
+
+
+### Features
+
+* Add switcheroo-control to davinci-dependencies ([885cb66](https://github.com/zelikos/davincibox/commit/885cb66c70c9a70ba0dafa11196dfdbfa9a2de24))
+* Always use run-davinci for launching Resolve and companion programs ([a980267](https://github.com/zelikos/davincibox/commit/a980267cfc302b6e40125a289dabfad5183bf720))
+* **run-davinci:** Use `switcherooctl launch` ([f081359](https://github.com/zelikos/davincibox/commit/f0813597d859e794e5da91122cd5d850ca379b4e))
+
+
+### Bug Fixes
+
+* Add ocl-icd to davinci-dependencies ([4050af6](https://github.com/zelikos/davincibox/commit/4050af69e480394c3871ec0ba937c465d3a75fbf))
+* **setup.sh:** Check GPU type when using Toolbx ([faf62d1](https://github.com/zelikos/davincibox/commit/faf62d1236e764548f934f7c13057ea407bfa56f))
+
 ## [3.0.0](https://github.com/zelikos/davincibox/compare/v2.0.4...v3.0.0) (2025-05-24)
 
 

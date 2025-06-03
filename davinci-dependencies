@@ -23,6 +23,8 @@ mesa-libOpenCL
 mtdev
 pipewire-alsa
 pulseaudio-libs
+python3-gobject
+switcheroo-control
 xcb-util
 xcb-util-cursor
 xcb-util-image

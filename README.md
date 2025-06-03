@@ -262,6 +262,34 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="096e", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users"
 ```
 
+### Dual GPU Systems
+
+Davincibox ships with switcheroo-control for handling multi-GPU systems, primarily intended for prioritizing the dedicated GPU over the integrated GPU in laptops. If you have a system with multiple dedicated GPUs, however, you may need to tell switcheroo-control which one to use by default.
+
+Enter davincibox with:
+
+  - Distrobox: `distrobox enter davincibox`
+  - Toolbox: `toolbox enter davincibox`
+
+Then, to list the GPUs switcheroo-control detects:
+
+`switcherooctl list`
+
+The output should look something like this:
+
+```
+Device: 0
+  Name:        Intel Corporation Meteor Lake-P [Intel Arc Graphics]
+  Default:     yes
+  Environment: DRI_PRIME=pci-0000_00_02_0
+```
+
+Use the `Device: #` line to determine the index for the GPU you want switcherooctl to use, then,
+
+`sed -i "s,switcherooctl launch,switcherooctl launch -g #," /usr/bin/run-davinci`
+
+replacing # with the appropriate number determined previously.
+
 ## Credits
 
 Sean Davis, AKA [bluesabre](https://github.com/bluesabre)

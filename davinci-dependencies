@@ -21,6 +21,7 @@ lshw
 mesa-libGLU
 mesa-libOpenCL
 mtdev
+ocl-icd
 pipewire-alsa
 pulseaudio-libs
 python3-gobject

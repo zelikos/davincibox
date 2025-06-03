@@ -70,11 +70,10 @@ then
     if [[ $container_type == "toolbox" ]]; then
         container_run_command="/usr/bin/toolbox run -c davincibox"
     elif [[ $container_type == "distrobox" ]]; then
-        # distrobox-enter ignores /etc/profile.d, so we have to ensure it uses a login shell
-        container_run_command="distrobox-enter -n davincibox -- bash -cl"
+        container_run_command="distrobox-enter -n davincibox --"
     fi
 
-    sed -i "s,Exec=,Exec=$container_run_command ," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+    sed -i "s,Exec=,Exec=$container_run_command /usr/bin/run-davinci ," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
 
     # Overwrite shortcut created by upstream DaVinci Resolve installer
     desktop_shortcut=$HOME/Desktop/com.blackmagicdesign.resolve.desktop

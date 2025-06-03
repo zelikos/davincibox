@@ -46,15 +46,20 @@ Then, from inside davincibox:
 ```
 sudo dnf install mesa-libOpenCL
 
-run-davinci rusticl
+# If you exclude the path below, run-davinci defaults to launching DaVinci Resolve.
+# If you want to launch one of the other programs included with Resolve,
+# use the path to its binary as shown below.
+run-davinci -c /path/to/binary
 ```
 
 If rusticl does work better for you and you would like to launch Resolve with rusticl via the desktop shortcut, you can adjust the `DaVinciResolve.desktop` file in `$HOME/.local/share/applications`.
 
 Change the `Exec=` line as follows:
 
-  - Distrobox: `Exec=distrobox-enter -n davincibox -- /usr/bin/run-davinci rusticl %u`
-  - Toolbox: `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci rusticl %u`
+  - Distrobox: `Exec=distrobox-enter -n davincibox -- /usr/bin/run-davinci -c /opt/resolve/bin/resolve %u`
+  - Toolbox: `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci -c /opt/resolve/bin/resolve %u`
+
+You can do the same for the other programs that come with DaVinci Resolve, too; just add the `-c` flag after `/usr/bin/run-davinci`.
 
 ### Intel
 

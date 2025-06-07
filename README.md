@@ -286,7 +286,7 @@ Device: 0
 
 Use the `Device: #` line to determine the index for the GPU you want switcherooctl to use, then,
 
-`sed -i "s,switcherooctl launch,switcherooctl launch -g #," /usr/bin/run-davinci`
+`sudo sed -i "s,switcherooctl launch,switcherooctl launch -g #," /usr/bin/run-davinci`
 
 replacing # with the appropriate number determined previously.
 

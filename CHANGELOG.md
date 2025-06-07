@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.0](https://github.com/zelikos/davincibox/compare/v3.1.0...v3.2.0) (2025-06-07)
+
+
+### Features
+
+* Add `list-gpus` wrapper for `switcherooctl list` ([8fe39e8](https://github.com/zelikos/davincibox/commit/8fe39e85b602a3ca56d5547f81653aa4706681ba))
+
+
+### Bug Fixes
+
+* **run-davinci:** Enable dbus for switcherooctl ([9ce2d8b](https://github.com/zelikos/davincibox/commit/9ce2d8b820e89c970e0f8caaae373ea4f2c6c150))
+
 ## [3.1.0](https://github.com/zelikos/davincibox/compare/v3.0.0...v3.1.0) (2025-06-03)
 
 

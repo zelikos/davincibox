@@ -271,9 +271,7 @@ Enter davincibox with:
   - Distrobox: `distrobox enter davincibox`
   - Toolbox: `toolbox enter davincibox`
 
-Then, to list the GPUs switcheroo-control detects:
-
-`switcherooctl list`
+Then, to list the GPUs switcheroo-control detects, run `list-gpus`; this is a wrapper for `switcherooctl list` that includes a needed environment variable for it to work in distrobox.
 
 The output should look something like this:
 

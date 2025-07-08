@@ -14,6 +14,7 @@ libXfixes
 libXi
 libXinerama
 libxkbcommon-x11
+libxkbfile
 libXrandr
 libXtst
 libXxf86vm
@@ -27,7 +28,6 @@ pipewire-alsa
 pulseaudio-libs
 python3-gobject
 switcheroo-control
-xkbfile
 xcb-util
 xcb-util-cursor
 xcb-util-image

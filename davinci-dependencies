@@ -21,11 +21,13 @@ lshw
 mesa-libGLU
 mesa-libOpenCL
 mtdev
+nss
 ocl-icd
 pipewire-alsa
 pulseaudio-libs
 python3-gobject
 switcheroo-control
+xkbfile
 xcb-util
 xcb-util-cursor
 xcb-util-image

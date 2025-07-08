@@ -4,6 +4,18 @@ container_type="distrobox"
 container_run_command=""
 setup_launcher=true
 
+# Function to check if a file exists and then append a line
+append_if_exists() {
+  local file_path="$1"
+  local content="$2"
+  if [ -f "$file_path" ]; then
+    echo "$content" >> "$file_path"
+    echo "Added '$content' to '$file_path'"
+  else
+    echo "Warning: File '$file_path' not found. Skipping append."
+  fi
+}
+
 if [[ $1 == "remove"  ]]
 then
     setup_launcher=false
@@ -36,6 +48,8 @@ else
                         setup_launcher=false;;
     esac
 fi
+
+
 
 if [[ $setup_launcher = true ]]
 then
@@ -74,6 +88,13 @@ then
     fi
 
     sed -i "s,Exec=,Exec=$container_run_command /usr/bin/run-davinci ," ~/.local/share/applications/{blackmagicraw*,DaVinci*}.desktop
+        
+    # Add StartupWMClass Property (Makes GNOME know which app each window belongs to)
+    append_if_exists "$HOME/.local/share/applications/blackmagicraw-player.desktop" "StartupWMClass=Blackmagic RAW Player"
+    append_if_exists "$HOME/.local/share/applications/blackmagicraw-speedtest.desktop" "StartupWMClass=Blackmagic RAW Speed Test"
+    append_if_exists "$HOME/.local/share/applications/DaVinciControlPanelsSetup.desktop" "StartupWMClass=DaVinci Control Panels Setup"
+    append_if_exists "$HOME/.local/share/applications/DaVinciRemoteMonitoring.desktop" "StartupWMClass=DaVinci Remote Monitor"
+    append_if_exists "$HOME/.local/share/applications/DaVinciResolve.desktop" "StartupWMClass=resolve"
 
     # Overwrite shortcut created by upstream DaVinci Resolve installer
     desktop_shortcut=$HOME/Desktop/com.blackmagicdesign.resolve.desktop

@@ -41,9 +41,9 @@ fi
 
 shift $((OPTIND - 1))
 
-if [[ $1 ]]; then
-  DAVINCI_BIN=$(readlink -e $1)
-  if [[ -f $DAVINCI_BIN ]]; then
+if [[ -n "$1" ]]; then  # Use -n for explicit non-empty string check
+  DAVINCI_BIN=$(readlink -e "$1") # Quote $1 here
+  if [[ -f "$DAVINCI_BIN" ]]; then
     echo "Launching $DAVINCI_BIN"
   else
     echo "$1 could not be found."
@@ -54,4 +54,4 @@ else
   DAVINCI_BIN="/opt/resolve/bin/resolve"
 fi
 
-DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket switcherooctl launch $DAVINCI_BIN
+DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket switcherooctl launch "$DAVINCI_BIN"

@@ -14,6 +14,7 @@ libXfixes
 libXi
 libXinerama
 libxkbcommon-x11
+libxkbfile
 libXrandr
 libXtst
 libXxf86vm
@@ -21,6 +22,7 @@ lshw
 mesa-libGLU
 mesa-libOpenCL
 mtdev
+nss
 ocl-icd
 pipewire-alsa
 pulseaudio-libs

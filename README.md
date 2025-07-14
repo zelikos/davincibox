@@ -8,7 +8,7 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 My own testing for davincibox has been with an AMD RX 6600XT GPU, an AMD RX 9070 GPU, and an Intel Core Ultra 5 125H (i.e. Intel Arc integrated graphics). Other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)
 
-AMD GPUs use ROCm (AMD's official compute package). There have previously been stability issues with using ROCm, but otherwise everything does work. Note that AMD's [official GPU support for ROCm](https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility/native_linux/native_linux_compatibility.html#gpu-support-matrix) is limited, and users of older AMD GPUs (such as the RX 500 series) may not have success with ROCm.
+AMD GPUs use ROCm (AMD's official compute package). There have previously been stability issues with using ROCm, typically in Fusion, but otherwise most everything does work. Note that AMD's [official GPU support for ROCm](https://rocm.docs.amd.com/projects/radeon/en/latest/docs/compatibility/native_linux/native_linux_compatibility.html#gpu-support-matrix) is limited, and users of older AMD GPUs (such as the RX 500 series) may not have success with ROCm.
 
 Intel GPUs use `intel-compute-runtime`. No issues have been found so far.
 

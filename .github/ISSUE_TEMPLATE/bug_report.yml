@@ -82,3 +82,8 @@ body:
       placeholder: ghcr.io/zelikos/davincibox-opencl          latest      559e3c624962  7 weeks ago  2.74 GB
     validations:
       required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Extra context
+      description: Any additional information that may be helpful

@@ -1,0 +1,97 @@
+name: Bug report
+description: File a bug report.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before reporting a bug, make sure that you can reproduce it on the latest version of davincibox.
+
+        See the [upgrading](https://github.com/zelikos/davincibox#upgrading) section of the README for more information.
+
+        Also, be sure to **read the [Disclaimers section of the README](https://github.com/zelikos/davincibox?tab=readme-ov-file#disclaimers) first**. Your issue may already be known and/or is an upstream issue with DaVinci Resolve directly, not with this project.
+  - type: checkboxes
+    id: not-about-codecs
+    attributes:
+      label: This issue is NOT about missing codecs
+      description: Codec support (or lack thereof) is NOT something davincibox is responsible for. Yes, this includes H264. See https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_Supported_Codec_List.pdf?_v=1723705210000
+      options:
+        - label: I understand
+          required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of the bug.
+      placeholder: Installation failed
+    validations:
+      required: true
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: A concise list of steps to reproduce the bug.
+      placeholder: 1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+  - type: dropdown
+    id: install-method
+    attributes:
+      label: Installation method used
+      description: You can select multiple.
+      options:
+        - setup.sh
+        - Manual, with Distrobox
+        - Manual, with Toolbx
+      default: 0
+      multiple: true
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: OS Version
+      description: Your operating system and the version number.
+      placeholder: Ubuntu 24.04, Fedora 42
+    validations:
+      required: true
+  - type: input
+    id: desktop-environment
+    attributes:
+      label: Desktop Environment
+      description: The desktop environment (or window manager) you are using.
+      placeholder: GNOME, KDE Plasma
+    validations:
+      required: true
+  - type: dropdown
+    id: gpu-vendor
+    attributes:
+      label: Your GPU's vendor
+      description: Select multiple if running a multi-GPU system, such as an NVIDIA dGPU with an AMD APU.
+      multiple: true
+      options:
+        - AMD
+        - Intel
+        - NVIDIA
+    validations:
+      required: true
+  - type: input
+    id: gpu-model
+    attributes:
+      label: GPU Model
+      description: The specific GPU from your GPU vendor.
+      placeholder: RX 9070, RTX 4080, Core Ultra 125H iGPU
+  - type: input
+    id: davincibox-version
+    attributes:
+      label: Davincibox build
+      description: The full, unedited output of the command `podman image list | grep davincibox`
+      placeholder: ghcr.io/zelikos/davincibox-opencl          latest      559e3c624962  7 weeks ago  2.74 GB
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Extra context
+      description: Any additional information that may be helpful

@@ -1,0 +1,11 @@
+name: Feature request
+description: Request a new feature or suggest an enhancement
+title: "Request: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: information
+    attributes:
+      label: What is your suggestion?
+      description: A detailed description of the feature you would like to request, or of the enhancement you would like to suggest for davincibox.

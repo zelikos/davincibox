@@ -85,6 +85,24 @@ body:
       label: GPU Model
       description: The specific GPU from your GPU vendor.
       placeholder: RX 9070, RTX 4080, Core Ultra 125H iGPU
+  - type: dropdown
+    id: free-or-studio
+    attributes:
+      label: DaVinci Resolve Free or DaVinci Resolve Studio
+      multiple: false
+      options:
+        - Free
+        - Studio
+        - Both
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: davinci-version
+    attributes:
+      label: DaVinci Resolve version
+      description: From the app's menu bar, DaVinci Resolve -> About DaVinci Resolve
+      placeholder: Version 20.0 Build 49
   - type: input
     id: davincibox-version
     attributes:

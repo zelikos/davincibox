@@ -32,8 +32,11 @@ body:
       label: Steps to reproduce
       description: A concise list of steps to reproduce the bug.
       placeholder: 1. Go to '...'
+
         2. Click on '....'
+
         3. Scroll down to '....'
+
         4. See error
   - type: dropdown
     id: install-method
@@ -42,8 +45,8 @@ body:
       description: You can select multiple.
       options:
         - setup.sh
-        - Manual, with Distrobox
-        - Manual, with Toolbx
+        - Manual with Distrobox
+        - Manual with Toolbx
       default: 0
       multiple: true
     validations:
@@ -94,4 +97,4 @@ body:
     id: additional-context
     attributes:
       label: Extra context
-      description: Any additional information that may be helpful
+      description: Any additional information that may be helpful, such as error logs or screenshots

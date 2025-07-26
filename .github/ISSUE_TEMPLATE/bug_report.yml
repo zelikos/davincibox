@@ -101,8 +101,8 @@ body:
     id: davinci-version
     attributes:
       label: DaVinci Resolve version
-      description: From the app's menu bar, DaVinci Resolve -> About DaVinci Resolve
-      placeholder: Version 20.0 Build 49
+      description: The DaVinci Resolve version number shown as part of the installer download
+      placeholder: "20.0"
     validations:
       required: true
   - type: input

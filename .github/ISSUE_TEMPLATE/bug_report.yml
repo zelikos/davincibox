@@ -10,6 +10,14 @@ body:
         See the [upgrading](https://github.com/zelikos/davincibox#upgrading) section of the README for more information.
 
         Also, be sure to **read the [Disclaimers section of the README](https://github.com/zelikos/davincibox?tab=readme-ov-file#disclaimers) first**. Your issue may already be known and/or is an upstream issue with DaVinci Resolve directly, not with this project.
+  - type: checkboxes
+    id: not-about-codecs
+    attributes:
+      label: This issue is NOT about missing codecs
+      description: Codec support (or lack thereof) is NOT something davincibox is responsible for. Yes, this includes H264. See https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_Supported_Codec_List.pdf?_v=1723705210000
+      options:
+        - label: I understand
+          required: true
   - type: textarea
     id: what-happened
     attributes:

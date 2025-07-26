@@ -103,6 +103,8 @@ body:
       label: DaVinci Resolve version
       description: From the app's menu bar, DaVinci Resolve -> About DaVinci Resolve
       placeholder: Version 20.0 Build 49
+    validations:
+      required: true
   - type: input
     id: davincibox-version
     attributes:

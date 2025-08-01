@@ -8,7 +8,13 @@ setup_launcher=true
 append_if_exists() {
   local file_path="$1"
   local content="$2"
+
   if [ -f "$file_path" ]; then
+    # If the last byte of the file is _not_ a newline, add one
+    if [ -n "$(tail -c1 "$file_path")" ]; then
+      echo >> "$file_path"
+    fi
+
     echo "$content" >> "$file_path"
     echo "Added '$content' to '$file_path'"
   else

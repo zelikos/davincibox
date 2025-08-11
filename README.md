@@ -266,7 +266,7 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users"
 
 ### Dual GPU Systems
 
-Davincibox ships with switcheroo-control for handling multi-GPU systems, primarily intended for prioritizing the dedicated GPU over the integrated GPU in laptops. If you have a system with multiple dedicated GPUs, however, you may need to tell switcheroo-control which one to use by default.
+Davincibox ships with switcheroo-control for handling multi-GPU systems, primarily intended for prioritizing the dedicated GPU over the system's integrated GPU (both in laptops and applicable desktops). If you have a system with multiple dedicated GPUs, however, you may need to tell switcheroo-control which one to use by default.
 
 Enter davincibox with:
 

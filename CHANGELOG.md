@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/zelikos/davincibox/compare/v3.2.0...v3.2.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* binaries with spaces, added StartupWMClass, added dependencies ([#195](https://github.com/zelikos/davincibox/issues/195)) ([7a69c58](https://github.com/zelikos/davincibox/commit/7a69c58ed51d730ecf4e37bed75ebde1ed4acbce))
+
 ## [3.2.0](https://github.com/zelikos/davincibox/compare/v3.1.0...v3.2.0) (2025-06-07)
 
 

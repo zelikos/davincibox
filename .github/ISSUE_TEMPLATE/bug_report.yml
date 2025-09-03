@@ -70,7 +70,7 @@ body:
   - type: dropdown
     id: gpu-vendor
     attributes:
-      label: Your GPU's vendor
+      label: GPU Vendor
       description: Select multiple if running a multi-GPU system, such as an NVIDIA dGPU with an AMD APU.
       multiple: true
       options:
@@ -85,6 +85,27 @@ body:
       label: GPU Model
       description: The specific GPU from your GPU vendor.
       placeholder: RX 9070, RTX 4080, Core Ultra 125H iGPU
+  - type: input
+    id: cpu-model
+    attributes:
+      label: CPU
+      description: The CPU in your system.
+      placeholder: Intel Core Ultra 125H, Ryzen 7 5700X
+    validations:
+      required: true
+  - type: dropdown
+    id: integrated-gpu
+    attributes:
+      label: CPU w/ integrated GPU?
+      description: If the CPU has an integrated GPU, it's possible the issue is with switcheroo-ctrl not correctly prioritizing your dedicated GPU instead. See the [troubleshooting section](https://github.com/zelikos/davincibox?tab=readme-ov-file#dual-gpu-systems) of the README.
+      options:
+        - Unsure
+        - Has iGPU
+        - No iGPU
+      default: 0
+      multiple: false
+    validations:
+      required: true
   - type: dropdown
     id: free-or-studio
     attributes:

@@ -130,7 +130,7 @@ body:
     id: davincibox-version
     attributes:
       label: Davincibox build
-      description: The full, unedited output of the command `podman image list | grep davincibox`
+      description: The ***full, unedited, NOT truncated, output*** of the command `podman image list | grep davincibox`
       placeholder: ghcr.io/zelikos/davincibox-opencl          latest      559e3c624962  7 weeks ago  2.74 GB
     validations:
       required: true

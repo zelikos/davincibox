@@ -80,7 +80,13 @@ create_davincibox_container () {
     # See https://github.com/zelikos/davincibox/issues/26#issuecomment-1850642631
     podman image pull "ghcr.io/zelikos/$davincibox_flavor:latest"
 
-    $container_create_prefix -i "ghcr.io/zelikos/$davincibox_flavor:latest"
+    # Manual workaround for new NVIDIA flags because trying to construct
+    # the command programmatically with variables caused quotation problems
+    if [[ $container_type == distrobox && $nvidia_gpu == true ]]; then
+      distrobox create -n davincibox --additional-flags "--gpus all" -i ghcr.io/zelikos/davincibox:latest
+    else
+      $container_create_prefix -i ghcr.io/zelikos/$davincibox_flavor:latest
+    fi
     # Ensure packages are up-to-date in case of old container build
     $container_run_prefix sudo dnf -y update
     $container_run_prefix echo "davincibox initialized"
@@ -109,9 +115,10 @@ if ! command -v distrobox &> /dev/null; then
 else
     set_container_type "distrobox"
     get_gpu_type
-    if [[ $nvidia_gpu == true ]]; then
-        container_create_prefix+=" --nvidia"
-    fi
+    # if [[ $nvidia_gpu == true ]]; then
+    #     container_create_prefix+=" --additional-flags \"--gpus all\""
+    #     echo "Container creation prefix: $container_create_prefix"
+    # fi
 fi
 
 if [[ $1 == "remove" ]]; then

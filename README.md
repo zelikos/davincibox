@@ -124,7 +124,7 @@ First, get davincibox set up. There are two different builds of davincibox, depe
 Distrobox:
 
 ```
-distrobox create -i ghcr.io/zelikos/davincibox:latest --nvidia -n davincibox
+distrobox create -i ghcr.io/zelikos/davincibox:latest --additional-flags "--gpus all" -n davincibox
 ```
 
 Toolbox:

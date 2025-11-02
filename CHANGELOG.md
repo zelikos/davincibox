@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.2.1](https://github.com/zelikos/davincibox/compare/v3.2.0...v3.2.1) (2025-11-02)
+
+
+### Bug Fixes
+
+* binaries with spaces, added StartupWMClass, added dependencies ([#195](https://github.com/zelikos/davincibox/issues/195)) ([7a69c58](https://github.com/zelikos/davincibox/commit/7a69c58ed51d730ecf4e37bed75ebde1ed4acbce))
+* **setup.sh:** Do distrobox create command for NVIDIA GPUs manually ([6cc0a4f](https://github.com/zelikos/davincibox/commit/6cc0a4f21b3edf31c535e51882a2009978ded036))
+* Use updated flags for nvidia-container-toolkit distroboxes ([1cabdea](https://github.com/zelikos/davincibox/commit/1cabdea82215d76226685565c31565b1d5e3a08f))
+
 ## [3.2.0](https://github.com/zelikos/davincibox/compare/v3.1.0...v3.2.0) (2025-06-07)
 
 

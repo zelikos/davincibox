@@ -83,7 +83,7 @@ create_davincibox_container () {
     # Manual workaround for new NVIDIA flags because trying to construct
     # the command programmatically with variables caused quotation problems
     if [[ $container_type == distrobox && $nvidia_gpu == true ]]; then
-      distrobox create -n davincibox --additional-flags "--gpus all" -i ghcr.io/zelikos/davincibox:latest
+      distrobox create -n davincibox --additional-flags "--device nvidia.com/gpu=all" -i ghcr.io/zelikos/davincibox:latest
     else
       $container_create_prefix -i ghcr.io/zelikos/$davincibox_flavor:latest
     fi

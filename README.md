@@ -4,6 +4,18 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 ## Disclaimers
 
+### OS Support
+
+The following distros are considered "officially" supported:
+
+- Fedora Atomic (i.e. Silverblue, Kinoite)
+- Bluefin
+- Bazzite
+
+Support for other distros such as Arch Linux, NixOS, Debian, and any derivatives are done on a best effort basis, but considered community supported. The priority for davincibox is for image-based/atomic systems due to those benefiting most from the container-based approach.
+
+For Debian, Ubuntu, and Linux Mint users, if you have difficulties with using davincibox, another great option for using DaVinci Resolve is [MakeResolveDeb by Daniel Tufvesson](https://www.danieltufvesson.com/makeresolvedeb). Do note that if using MakeResolveDeb, if using an AMD GPU, you will need to install ROCm (or `rusticl`) yourself; for Intel, you will need `intel-compute-runtime`.
+
 ### GPU Support
 
 My own testing for davincibox has been with an AMD RX 6600XT GPU, an AMD RX 9070 GPU, and an Intel Core Ultra 5 125H (i.e. Intel Arc integrated graphics). Other users have contributed test results here: [#21](https://github.com/zelikos/davincibox/issues/21)

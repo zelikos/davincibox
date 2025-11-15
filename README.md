@@ -4,6 +4,8 @@ This project aims to provide a ready-to-go container with all of the needed depe
 
 ## Disclaimers
 
+This project and its maintainer are **not** affiliated nor associated with BlackMagicDesign.
+
 ### OS Support
 
 The following distros are considered "officially" supported:

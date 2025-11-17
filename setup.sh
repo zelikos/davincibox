@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 container_type=""
 container_create_prefix=""
@@ -59,7 +59,7 @@ run_davinci_setup () {
     installer=$1
     # Extract DaVinci installer
     echo "Extracting ${installer} ..."
-    $installer --appimage-extract
+    distrobox enter davincibox -- $installer --appimage-extract
     if [[ $? -eq 0 ]]; then
       # Run setup-davinci
       extracted_installer="squashfs-root/AppRun"

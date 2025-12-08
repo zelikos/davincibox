@@ -44,7 +44,7 @@ You will need [Podman](https://podman.io/), as well as [`distrobox`](https://git
 
 You will also need the latest release of DaVinci Resolve from [Blackmagic's website](https://www.blackmagicdesign.com/products/davinciresolve).
 
-Your user in the host system has to be member of the groups 'render' and 'video' which you can add with `usermod -aG render,video USERNAME` in the console of the host system.
+Your user in the host system may neet to be a member of the groups 'render' and 'video'. You can add these with `usermod -aG render,video USERNAME` in the console of the host system.
 
 If you're less comfortable in the CLI, I recommend using the `setup.sh` script from this repository to help simplify the setup process, but ultimately use of the CLI is a requirement.
 

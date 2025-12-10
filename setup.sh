@@ -63,7 +63,7 @@ run_davinci_setup () {
     if [[ $? -eq 0 ]]; then
       # Run setup-davinci
       extracted_installer="squashfs-root/AppRun"
-      $container_run_prefix /usr/bin/setup-davinci $extracted_installer $container_type
+      $container_run_prefix /usr/bin/setup-davinci $extracted_installer $container_type < /dev/tty
       rm -rf squashfs-root/
     else
         echo "${installer} could not be extracted."
@@ -88,7 +88,7 @@ create_davincibox_container () {
       $container_create_prefix -i ghcr.io/zelikos/$davincibox_flavor:latest
     fi
     # Ensure packages are up-to-date in case of old container build
-    $container_run_prefix sudo dnf -y update
+    $container_run_prefix sudo dnf -y update < /dev/tty
     $container_run_prefix echo "davincibox initialized"
 }
 

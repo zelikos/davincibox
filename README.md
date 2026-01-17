@@ -272,12 +272,9 @@ An example udev rule is as follows:
 ```
 # Place this file in /etc/udev/rules.d/
 # Recommended file name: 90-davinci-usb.rules
+# Provides access to USB-based Davinci Resolve licence keys to unprivileged users.
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="096e", TAG+="uaccess"
-
-# Allow access to toolbox / distrobox
-
-SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users"
+SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
 ```
 
 ### Dual GPU Systems

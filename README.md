@@ -52,9 +52,9 @@ If you're less comfortable in the CLI, I recommend using the `setup.sh` script f
 
 ### AMD
 
-AMD uses ROCm, and should generally work out of the box on modern AMD GPUs (RX 5000 series and above). However, some distros such as Debian may additionally require the `rocm-podman-support` package to be installed (on the host, not in davincibox).
+AMD uses ROCm, and should generally work out of the box on modern AMD GPUs (RX 6000 series and above). However, some distros such as Debian may additionally require the `rocm-podman-support` package to be installed (on the host, not in davincibox).
 
-[GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus) and it may not work on older AMD GPUs (RX 500 series and prior). If the standard setup instructions do not result in a functional DaVinci Resolve, you can instead try using `rusticl`:
+[GPU support in ROCm is very limited](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html#supported-gpus) and it may not work on older AMD GPUs (RX 5000 series and prior). If the standard setup instructions do not result in a functional DaVinci Resolve, you can instead try using `rusticl`:
 
   - Distrobox: `distrobox enter davincibox`
   - Toolbox: `toolbox enter davincibox`

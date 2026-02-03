@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.2](https://github.com/zelikos/davincibox/compare/v3.2.1...v3.2.2) (2026-02-03)
+
+
+### Bug Fixes
+
+* **nvidia:** Use `--device` flag instead of `--gpus all` ([2b3b87a](https://github.com/zelikos/davincibox/commit/2b3b87a2fe9359685ae7569d1951cd0e8e90574e)), closes [#220](https://github.com/zelikos/davincibox/issues/220)
+
 ## [3.2.1](https://github.com/zelikos/davincibox/compare/v3.2.0...v3.2.1) (2025-11-02)
 
 

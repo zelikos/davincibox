@@ -19,7 +19,7 @@ jobs:
     steps:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Generate tags
         id: generate-tags

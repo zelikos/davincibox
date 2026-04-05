@@ -1,3 +1,22 @@
 #!/bin/bash
 
-DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket switcherooctl list
+get_host_dbus_socket () {
+	for socket_path in \
+		/run/host/var/run/dbus/system_bus_socket \
+		/run/host/run/dbus/system_bus_socket
+	do
+		if [[ -S "$socket_path" ]]; then
+			echo "$socket_path"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+if dbus_socket="$(get_host_dbus_socket)"; then
+	DBUS_SYSTEM_BUS_ADDRESS="unix:path=$dbus_socket" switcherooctl list
+else
+	echo "Warning: Could not find host DBus system_bus_socket mount." >&2
+	switcherooctl list
+fi

@@ -3,6 +3,10 @@
 export QT_QPA_PLATFORM=xcb
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
+# Clear LD_LIBRARY_PATH inherited from the host to avoid broken paths
+# (e.g. paths pointing to files instead of directories) causing crashes
+unset LD_LIBRARY_PATH
+
 GPU_TYPE=""
 USE_RUSTICL=false
 DAVINCI_BIN=""
@@ -27,6 +31,20 @@ get_gpu_type
 enable_rusticl () {
   export RUSTICL_ENABLE=radeonsi,iris,nouveau
   export OCL_ICD_VENDORS=rusticl.icd
+}
+
+get_host_dbus_socket () {
+  for socket_path in \
+    /run/host/var/run/dbus/system_bus_socket \
+    /run/host/run/dbus/system_bus_socket
+  do
+    if [[ -S "$socket_path" ]]; then
+      echo "$socket_path"
+      return 0
+    fi
+  done
+
+  return 1
 }
 
 while getopts "c" flag; do
@@ -54,4 +72,35 @@ else
   DAVINCI_BIN="/opt/resolve/bin/resolve"
 fi
 
-DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket switcherooctl launch "$DAVINCI_BIN"
+# Remove empty config files that cause crashes on startup.
+# DaVinci Resolve can truncate config.dat to 0 bytes if terminated
+# unexpectedly, then crashes with a segfault on the next launch.
+# Restore from the default config if available.
+RESOLVE_CONFIG_DIR="${HOME}/.local/share/DaVinciResolve/configs"
+DEFAULT_CONFIG="/opt/resolve/share/default-config.dat"
+for cfg in "$RESOLVE_CONFIG_DIR/config.dat" "$RESOLVE_CONFIG_DIR/.config.data"; do
+  if [[ -f "$cfg" && ! -s "$cfg" ]]; then
+    rm -f "$cfg"
+  fi
+done
+if [[ ! -f "$RESOLVE_CONFIG_DIR/config.dat" && -f "$DEFAULT_CONFIG" ]]; then
+  mkdir -p "$RESOLVE_CONFIG_DIR"
+  cp "$DEFAULT_CONFIG" "$RESOLVE_CONFIG_DIR/config.dat"
+fi
+
+# Copy log config from system default if missing or empty
+if [[ ! -s "$RESOLVE_CONFIG_DIR/log-conf.xml" && -f /opt/resolve/share/log-conf.xml ]]; then
+  cp /opt/resolve/share/log-conf.xml "$RESOLVE_CONFIG_DIR/log-conf.xml"
+fi
+
+if [[ "$GPU_TYPE" == "nvidia" ]]; then
+  # Skip switcherooctl for NVIDIA GPUs; its PRIME offload env vars
+  # (__NV_PRIME_RENDER_OFFLOAD, __GLX_VENDOR_LIBRARY_NAME, etc.)
+  # crash DaVinci Resolve on hybrid GPU systems
+  "$DAVINCI_BIN"
+elif dbus_socket="$(get_host_dbus_socket)"; then
+  DBUS_SYSTEM_BUS_ADDRESS="unix:path=$dbus_socket" switcherooctl launch "$DAVINCI_BIN"
+else
+  echo "Warning: Could not find host DBus system_bus_socket mount." >&2
+  switcherooctl launch "$DAVINCI_BIN"
+fi

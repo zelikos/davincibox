@@ -193,6 +193,9 @@ You can still run `add-davinci-launcher` separately, as either `add-davinci-laun
 
 After installation completes, you can remove the `squashfs-root` directory.
 
+If you install OpenFX plugins on the host in `/usr/OFX/Plugins`, `setup-davinci`
+will link that directory into the container so Resolve can see the same plugins.
+
 After setup, run `sudo dnf update` in the container to ensure drivers are up to date:
 
 

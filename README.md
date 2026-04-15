@@ -2,6 +2,8 @@
 
 This project aims to provide a ready-to-go container with all of the needed dependencies to install and run DaVinci Resolve on Linux, based on information compiled by bluesabre in his [GitHub Gist](https://gist.github.com/bluesabre/8814afece711b0ca49de34c41e50b296). Davincibox is primarily intended for users of image-based systems such as Fedora Atomic Desktops and Universal Blue images, but it can be used on any Linux distro that distrobox is available on.
 
+Note: running this on NixOS still requires you to properly set up `podman` and `distrobox` following the [NixOS Wiki](https://wiki.nixos.org/wiki/Podman) beforehand.
+
 ## Disclaimers
 
 This project and its maintainer are **not** affiliated nor associated with BlackMagicDesign.

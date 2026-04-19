@@ -7,6 +7,44 @@ GPU_TYPE=""
 USE_RUSTICL=false
 DAVINCI_BIN=""
 
+# Additional host paths to symlink into the container.
+# Each entry is "host_path:container_path".
+HOST_LINKS=(
+  "/run/host/usr/OFX/Plugins:/usr/OFX/Plugins"
+)
+
+link_host_paths () {
+  for entry in "${HOST_LINKS[@]}"; do
+    local host_path="${entry%%:*}"
+    local container_path="${entry#*:}"
+
+    if [[ ! -d $host_path ]]; then
+      echo "Host path not found, skipping: $host_path"
+      continue
+    fi
+
+    # Already linked
+    if [[ -L $container_path ]]; then
+      echo "Already linked: $container_path -> $host_path"
+      continue
+    fi
+
+    # Container path has existing content - don't overwrite
+    if [[ -d $container_path ]] && find "$container_path" -mindepth 1 -maxdepth 1 -print -quit | grep -q .; then
+      echo "Skipping $container_path (already contains files)"
+      continue
+    fi
+
+    sudo mkdir -p "$(dirname "$container_path")"
+    sudo rm -rf "$container_path"
+    if sudo ln -s "$host_path" "$container_path"; then
+      echo "Linked: $container_path -> $host_path"
+    else
+      echo "Failed to link: $container_path -> $host_path"
+    fi
+  done
+}
+
 get_gpu_type () {
   # Checks only for nvidia driver and not nouveau
   if lshw -c video 2>/dev/null | grep -qi "driver=nvidia"; then
@@ -53,5 +91,7 @@ else
   echo "No path specified. Launching /opt/resolve/bin/resolve"
   DAVINCI_BIN="/opt/resolve/bin/resolve"
 fi
+
+link_host_paths
 
 DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket switcherooctl launch "$DAVINCI_BIN"

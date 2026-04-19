@@ -5,32 +5,6 @@ valid=false
 install_success=false
 add_launcher=false
 
-link_host_ofx_plugins () {
-    local host_ofx_dir="/run/host/usr/OFX/Plugins"
-    local container_ofx_root="/usr/OFX"
-    local container_ofx_dir="${container_ofx_root}/Plugins"
-
-    if [[ ! -d $host_ofx_dir ]]; then
-        return
-    fi
-
-    echo "Linking host OFX plugins..."
-    sudo mkdir -p "$container_ofx_root"
-
-    if [[ -L $container_ofx_dir ]]; then
-        return
-    fi
-
-    if [[ -d $container_ofx_dir ]] && find "$container_ofx_dir" -mindepth 1 -maxdepth 1 -print -quit | grep -q .; then
-        echo "${container_ofx_dir} already contains plugins."
-        echo "Skipping automatic OFX symlink to avoid overwriting container files."
-        return
-    fi
-
-    sudo rm -rf "$container_ofx_dir"
-    sudo ln -s "$host_ofx_dir" "$container_ofx_dir"
-}
-
 if [[ $1 ]]
 then
     installer=$(readlink -e $1)
@@ -88,8 +62,6 @@ then
     done
     unset decoder -v
     unset decoders -v
-
-        link_host_ofx_plugins
 
     # TODO: Better phrasing
     echo "Add DaVinci Resolve launcher? Y/n"

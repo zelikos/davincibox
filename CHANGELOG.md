@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.2](https://github.com/zelikos/davincibox/compare/v3.2.1...v3.2.2) (2026-04-23)
+
+
+### Bug Fixes
+
+* Link host OFX plugins into davincibox ([#257](https://github.com/zelikos/davincibox/issues/257)) ([22bbf16](https://github.com/zelikos/davincibox/commit/22bbf169d9b54814623957f23d3b0b8dde433d17))
+* **nvidia:** Use `--device` flag instead of `--gpus all` ([2b3b87a](https://github.com/zelikos/davincibox/commit/2b3b87a2fe9359685ae7569d1951cd0e8e90574e)), closes [#220](https://github.com/zelikos/davincibox/issues/220)
+
 ## [3.2.1](https://github.com/zelikos/davincibox/compare/v3.2.0...v3.2.1) (2025-11-02)
 
 

@@ -262,9 +262,8 @@ You can either convert your host system to provide `pipewire` or change your `da
 For example, if your host-system uses `pulseaudio`, you can change `davincibox` as follows:
 
 ```
-> distrobox-enter -n davincibox
-> sudo dnf remove pipewire-alsa
-> sudo dnf install alsa-plugins-pulseaudio
+distrobox enter davincibox -- sudo dnf remove pipewire-alsa
+distrobox enter davincibox -- sudo dnf install alsa-plugins-pulseaudio
 ```
 
 ### Resolve Studio crashes on "Checking Licences..."

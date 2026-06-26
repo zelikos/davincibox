@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/zelikos/davincibox/compare/v3.3.0...v3.3.1) (2026-06-26)
+
+
+### Bug Fixes
+
+* Don't use `distrobox-enter` ([b8cd162](https://github.com/zelikos/davincibox/commit/b8cd1620a02b51d780ae6db7dea0a17fe7023042))
+
 ## [3.3.0](https://github.com/zelikos/davincibox/compare/v3.2.1...v3.3.0) (2026-05-14)
 
 

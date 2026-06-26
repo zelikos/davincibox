@@ -74,7 +74,7 @@ If rusticl does work better for you and you would like to launch Resolve with ru
 
 Change the `Exec=` line as follows:
 
-  - Distrobox: `Exec=distrobox-enter -n davincibox -- /usr/bin/run-davinci -c /opt/resolve/bin/resolve %u`
+  - Distrobox: `Exec=distrobox enter -n davincibox -- /usr/bin/run-davinci -c /opt/resolve/bin/resolve %u`
   - Toolbox: `Exec=/usr/bin/toolbox run -c davincibox /usr/bin/run-davinci -c /opt/resolve/bin/resolve %u`
 
 You can do the same for the other programs that come with DaVinci Resolve, too; just add the `-c` flag after `/usr/bin/run-davinci`.
@@ -262,7 +262,7 @@ You can either convert your host system to provide `pipewire` or change your `da
 For example, if your host-system uses `pulseaudio`, you can change `davincibox` as follows:
 
 ```
-> distrobox-enter -n davincibox
+> distrobox enter -n davincibox
 > sudo dnf remove pipewire-alsa
 > sudo dnf install alsa-plugins-pulseaudio
 ```

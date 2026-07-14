@@ -271,7 +271,7 @@ For example, if your host-system uses `pulseaudio`, you can change `davincibox` 
 DaVinci's internal codecs seem to have some issues at times with some types of source media in combination with some output formats.
 To fix this you can either:
 - Swap to using another output format (Usually uncompressed formats work okay)
-- Install the FFMpeg encoder plugin, found here: https://github.com/EdvinNilsson/ffmpeg_encoder_plugin , and export using an FFMpeg encoder.
+- (Resolve Studio ONLY) Install the FFMpeg encoder plugin, found here: https://github.com/EdvinNilsson/ffmpeg_encoder_plugin , and export using an FFMpeg encoder.
 
 Note that `davincibox` does not currently ship one of the dependancies required by the FFMpeg encoder plugin, but this can be fixed by entering the container and running:  `sudo dnf install libva`
 

@@ -276,7 +276,14 @@ An example udev rule is as follows:
 # Recommended file name: 90-davinci-usb.rules
 # Provides access to USB-based Davinci Resolve licence keys to unprivileged users.
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="users", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="096e", MODE="0664", GROUP="plugdev", TAG+="uaccess"
+```
+Note: The above udev rule will work if the USB dongle is plugged into the machine prior to login by default. If you need to plug / unplug the dongle while in a live login session, you may need to add yourself to the `plugdev` group.
+
+You can do so as follows:
+```
+grep -E '^plugdev:' /usr/lib/group | sudo tee -a /etc/group
+sudo usermod -aG plugdev $USER
 ```
 
 ### Dual GPU Systems

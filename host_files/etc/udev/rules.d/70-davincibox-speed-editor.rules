@@ -1,0 +1,6 @@
+# Install on the host: the container does not manage host device permissions.
+# Run before 73-seat-late.rules so logind grants the active local user access.
+
+# DaVinci Resolve Speed Editor: USB control and HID interfaces.
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1edb", ATTR{idProduct}=="da0e", TAG+="uaccess"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1edb", ATTRS{idProduct}=="da0e", TAG+="uaccess"

@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.3.1](https://github.com/zelikos/davincibox/compare/v3.3.0...v3.3.1) (2026-09-12)
+
+
+### Bug Fixes
+
+* Don't use `distrobox-enter` ([b8cd162](https://github.com/zelikos/davincibox/commit/b8cd1620a02b51d780ae6db7dea0a17fe7023042))
+* provide host udev rules for USB Speed Editor access ([13afc9f](https://github.com/zelikos/davincibox/commit/13afc9f7d045b3b6d717bd497f0ae80193562c00))
+* provide host udev rules for USB Speed Editor access ([#279](https://github.com/zelikos/davincibox/issues/279)) ([09e9fa7](https://github.com/zelikos/davincibox/commit/09e9fa7b296e27db6e888e392423181e8d7bfc2a))
+
 ## [3.3.0](https://github.com/zelikos/davincibox/compare/v3.2.1...v3.3.0) (2026-05-14)
 
 

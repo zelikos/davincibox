@@ -294,6 +294,42 @@ grep -E '^plugdev:' /usr/lib/group | sudo tee -a /etc/group
 sudo usermod -aG plugdev $USER
 ```
 
+### Speed Editor not detected over USB
+
+If the host detects the DaVinci Resolve Speed Editor (`1edb:da0e` in `lsusb`)
+but Resolve or DaVinci Control Panels Setup cannot connect to it, check the host's
+device permissions. The Resolve installer installs udev rules inside davincibox,
+but the host's udev service manages the USB and HID device nodes shared with the
+container. Rules installed only inside the container do not grant access to them.
+
+From a checkout of this repository, run the following **on the host**, outside
+distrobox/toolbox:
+
+```sh
+sudo install -D -m 0644 host_files/etc/udev/rules.d/70-davincibox-speed-editor.rules /etc/udev/rules.d/70-davincibox-speed-editor.rules
+sudo udevadm control --reload-rules
+```
+
+Unplug and reconnect the Speed Editor's USB cable, then reopen Resolve or
+DaVinci Control Panels Setup if it does not detect the device automatically.
+There is no need to rebuild the container or reinstall Resolve.
+
+The rules grant the active local desktop user read/write access to this device's
+USB and HID interfaces via `uaccess` on hosts using systemd-logind. The `70-`
+filename is intentional: the tag must be set before `73-seat-late.rules` applies
+the access control list. No additional group membership is required.
+
+This addresses USB device access. Bluetooth pairing and firmware update failures
+after the device is detected require separate troubleshooting.
+
+To remove these rules, run the following on the host, then unplug and reconnect
+the Speed Editor:
+
+```sh
+sudo rm /etc/udev/rules.d/70-davincibox-speed-editor.rules
+sudo udevadm control --reload-rules
+```
+
 ### Dual GPU Systems
 
 Davincibox ships with switcheroo-control for handling multi-GPU systems, primarily intended for prioritizing the dedicated GPU over the system's integrated GPU (both in laptops and applicable desktops). If you have a system with multiple dedicated GPUs, however, you may need to tell switcheroo-control which one to use by default.
